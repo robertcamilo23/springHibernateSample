@@ -14,94 +14,81 @@ import Comp473p2.domain.interfaces.FacilityCRUD;
 public class FacilityService implements FacilityCRUD
 {
 
-    private BuildingDAO buildingDAO = new BuildingDAO( );
-    private FloorDAO floorDAO = new FloorDAO( );
-    private RoomDAO roomDAO = new RoomDAO( );
+	private BuildingDAO buildingDAO = new BuildingDAO( );
+	private FloorDAO floorDAO = new FloorDAO( );
+	private RoomDAO roomDAO = new RoomDAO( );
 
-    @Override
-    public void createBuilding( Building building )
-    {
-        buildingDAO.openCurrentSessionWithTransaction( );
-        buildingDAO.persist( building );
-        buildingDAO.closeCurrentSessionWithTransaction( );
-    }
+	public void createBuilding( Building building )
+	{
+		buildingDAO.openCurrentSessionWithTransaction( );
+		buildingDAO.persist( building );
+		buildingDAO.closeCurrentSessionWithTransaction( );
+	}
 
-    @Override
-    public Building readBuilding( Integer buildingId )
-    {
-        buildingDAO.openCurrentSession( );
-        Building building = buildingDAO.findById( buildingId );
-        buildingDAO.closeCurrentSession( );
-        return building;
-    }
+	public Building readBuilding( Integer buildingId )
+	{
+		buildingDAO.openCurrentSession( );
+		Building building = buildingDAO.findById( buildingId );
+		buildingDAO.closeCurrentSession( );
+		return building;
+	}
 
-    @Override
-    public void updateBuilding( Building building )
-    {
-        buildingDAO.openCurrentSessionWithTransaction( );
-        buildingDAO.update( building );
-        buildingDAO.closeCurrentSessionWithTransaction( );
-    }
+	public void updateBuilding( Building building )
+	{
+		buildingDAO.openCurrentSessionWithTransaction( );
+		buildingDAO.update( building );
+		buildingDAO.closeCurrentSessionWithTransaction( );
+	}
 
-    @Override
-    public void deleteBuilding( Building building )
-    {
-        buildingDAO.openCurrentSessionWithTransaction( );
-        buildingDAO.delete( building );
-        buildingDAO.closeCurrentSessionWithTransaction( );
-    }
+	public void deleteBuilding( Building building )
+	{
+		buildingDAO.openCurrentSessionWithTransaction( );
+		buildingDAO.delete( building );
+		buildingDAO.closeCurrentSessionWithTransaction( );
+	}
 
-    @Override
-    public void deleteBuilding( Integer buildingId )
-    {
-        deleteBuilding( readBuilding( buildingId ) );
-    }
+	public void deleteBuilding( Integer buildingId )
+	{
+		deleteBuilding( readBuilding( buildingId ) );
+	}
 
-    @Override
-    public void createFloor( Floor floor )
-    {
+	public void createFloor( Floor floor )
+	{
 
-    }
+	}
 
-    @Override
-    public void readFloor( Integer floorId )
-    {
+	public void readFloor( Integer floorId )
+	{
 
-    }
+	}
 
-    @Override
-    public void updateFloor( Floor floor )
-    {
+	public void updateFloor( Floor floor )
+	{
 
-    }
+	}
 
-    @Override
-    public void deleteFloor( Floor floor )
-    {
+	public void deleteFloor( Floor floor )
+	{
 
-    }
+	}
 
-    @Override
-    public void createRoom( Room room )
-    {
+	public void createRoom( Room room )
+	{
 
-    }
+	}
 
-    @Override
-    public void readRoom( Integer roomId )
-    {
+	public void readRoom( Integer roomId )
+	{
 
-    }
+	}
 
-    @Override
-    public void updateRoom( Room room )
-    {
+	public void updateRoom( Room room )
+	{
 
-    }
+	}
 
-    @Override
-    public void deleteRoom( Room room )
-    {
+	public void deleteRoom( Room room )
+	{
 
-    }
+	}
 }

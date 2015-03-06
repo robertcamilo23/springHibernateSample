@@ -20,37 +20,31 @@ import java.util.List;
  */
 public class BuildingDAO extends SessionManager implements FacilityDAOInterface< Building, Integer >
 {
-    @Override
     public void persist( Building building )
     {
         getCurrentSession( ).save( building );
     }
 
-    @Override
     public void update( Building building )
     {
         getCurrentSession( ).update( building );
     }
 
-    @Override
     public Building findById( Integer id )
     {
         return ( Building ) getCurrentSession( ).get( Building.class, id );
     }
 
-    @Override
     public void delete( Building building )
     {
         getCurrentSession( ).delete( building );
     }
 
-    @Override
     public List< Building > findAll( )
     {
         return ( List< Building > ) getCurrentSession( ).createQuery( "from Buildings" ).list( );
     }
 
-    @Override
     public void deleteAll( )
     {
         for ( Building building : findAll( ) )

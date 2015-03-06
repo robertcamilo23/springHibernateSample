@@ -20,37 +20,31 @@ import java.util.List;
  */
 public class RoomDAO extends SessionManager implements FacilityDAOInterface< Room, Integer >
 {
-    @Override
     public void persist( Room room )
     {
         getCurrentSession( ).save( room );
     }
 
-    @Override
     public void update( Room room )
     {
         getCurrentSession( ).update( room );
     }
 
-    @Override
     public Room findById( Integer id )
     {
         return ( Room ) getCurrentSession( ).get( Room.class, id );
     }
 
-    @Override
     public void delete( Room room )
     {
         getCurrentSession( ).delete( room );
     }
 
-    @Override
     public List< Room > findAll( )
     {
         return ( List< Room > ) getCurrentSession( ).createQuery( "from Rooms" ).list( );
     }
 
-    @Override
     public void deleteAll( )
     {
         for ( Room room : findAll( ) )
