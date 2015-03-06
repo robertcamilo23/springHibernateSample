@@ -9,7 +9,7 @@
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="name" type="java.lang.String" column="name"/>
         <property name="address" type="java.lang.String" column="address"/>
-        <list name="floors">
+        <list name="Floors">
             <key column="Buildings_id"></key>
             <list-index base="0"/>
             <one-to-many class="Comp473p2.domain.facility.Floor"/>
