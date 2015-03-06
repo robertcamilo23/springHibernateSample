@@ -3,9 +3,13 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
+<!--Reference: http://www.tutorialspoint.com/hibernate/hibernate_list_mapping.htm-->
+
 <hibernate-mapping package="Comp473p2.domain.facility">
     <class name="Building" table="Buildings">
-        <id name="facilityId" column="id"/>
+        <id name="facilityId" column="id">
+            <generator class="native"/>
+        </id>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="name" type="java.lang.String" column="name"/>
         <property name="address" type="java.lang.String" column="address"/>

@@ -5,12 +5,14 @@
 
 <hibernate-mapping package="Comp473p2.domain.facility">
     <class name="Room" table="Rooms">
-        <id name="facilityId" column="id"/>
+        <id name="facilityId" column="id">
+            <generator class="native"/>
+        </id>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="number" type="java.lang.Integer" column="number"/>
         <!--<list name="occupancies">-->
-            <!--<key column="Buildings_id"/>-->
-            <!--<many-to-many column="Occupancies_id" class="Comp473p2.domain.Occupancy"/>-->
+        <!--<key column="Buildings_id"/>-->
+        <!--<many-to-many column="Occupancies_id" class="Comp473p2.domain.Occupancy"/>-->
         <!--</list>-->
     </class>
 </hibernate-mapping>

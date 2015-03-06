@@ -5,7 +5,9 @@
 
 <hibernate-mapping package="Comp473p2.domain.facility">
     <class name="Floor" table="Floors">
-        <id name="facilityId" column="id"/>
+        <id name="facilityId" column="id">
+            <generator class="native"/>
+        </id>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="level" type="java.lang.Integer" column="level"/>
         <list name="rooms" cascade="all">
