@@ -23,8 +23,9 @@
         <property name="current_session_context_class">thread</property>
         
         <!-- Mapping resource configuration files -->
-        <mapping resource="com/online/bookstore/dao/Customer.hbm.xml"/>
-        <mapping resource="com/online/bookstore/dao/Address.hbm.xml"/>
-        
+        <mapping resource="Building.hbm.xml"/>
+        <mapping resource="Floor.hbm.xml"/>
+        <mapping resource="Room.hbm.xml"/>
+
     </session-factory>
 </hibernate-configuration>

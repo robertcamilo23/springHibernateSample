@@ -45,4 +45,6 @@
 
     <bean id="occupancy" class="Comp473p2.domain.Occupancy" scope="prototype"/>
 
+    <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
+
 </beans>
