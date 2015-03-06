@@ -8,7 +8,7 @@
         <id name="facilityId" column="id"/>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="level" type="java.lang.Integer" column="level"/>
-        <list name="Rooms">
+        <list name="rooms">
             <key column="Floors_id"></key>
             <list-index base="0"/>
             <one-to-many class="Comp473p2.domain.facility.Room"/>
