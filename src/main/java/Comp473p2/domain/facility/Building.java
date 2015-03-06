@@ -23,42 +23,8 @@ public class Building extends Facility
     private List< Floor > floors;
 
     // ----------------------------
-    // Constructor
+    // Getters & Setters
     // ----------------------------
-
-    public Building( String name, Detail detail, List< Floor > floors, String address )
-    {
-        Integer buildingCapacity = 0;
-        for ( Floor floor : floors )
-        {
-            buildingCapacity += floor.getCapacity( );
-        }
-        this.setCapacity( buildingCapacity );
-        this.setName( name );
-        this.setAddress( address );
-        this.setDetail( detail );
-        this.setFloors( floors );
-    }
-
-    // ----------------------------
-    // Methods
-    // ----------------------------
-
-    @Override
-    public String getFacilityInformation( )
-    {
-        return "Building ID: " + this.getFacilityId( ) + ", room info: " + this.getName( ) + ", " + this.getAddress( ) + ", detail: " + this.getDetail( ).getFacilityInformation( );
-    }
-
-    public String getAvailableCapacity( )
-    {
-        Integer availableCapacity = 0;
-        for ( Floor floor : floors )
-        {
-            availableCapacity = floor.getAvailableCapacity( );
-        }
-        return String.format( "%d rooms available", availableCapacity );
-    }
 
     public String getName( )
     {
@@ -83,11 +49,6 @@ public class Building extends Facility
     public List< Floor > getFloors( )
     {
         return floors;
-    }
-
-    public Floor getFloor( Integer floorLevel )
-    {
-        return getFloors( ).get( floorLevel );
     }
 
     public void setFloors( List< Floor > floors )

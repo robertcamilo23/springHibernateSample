@@ -1,6 +1,5 @@
 package Comp473p2.domain.facility;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,45 +22,8 @@ public class Floor extends Facility
     private List< Room > rooms;
 
     // ----------------------------
-    // Constructor
+    // Getters & Setters
     // ----------------------------
-
-    public Floor( Integer level, Detail detail, List< Room > rooms )
-    {
-        Integer floorCapacity = 0;
-        for ( Room room : rooms )
-        {
-            floorCapacity += room.getCapacity( );
-        }
-        this.setCapacity( floorCapacity );
-        this.level = level;
-        this.rooms = rooms;
-        this.setDetail( detail );
-    }
-
-    // ----------------------------
-    // Methods
-    // ----------------------------
-
-    @Override
-    public String getFacilityInformation( )
-    {
-        return "Floor ID: " + this.getFacilityId( ) + ", floor level: " + this.getLevel( ) + ", detail: " + this.getDetail( ).getFacilityInformation( );
-    }
-
-    public int getAvailableCapacity( )
-    {
-        Integer capacity = 0;
-        Date date = new Date( );
-        for ( Room room : rooms )
-        {
-            if ( room.isInUseDuringInterval( date, date ) )
-            {
-                capacity++;
-            }
-        }
-        return capacity;
-    }
 
     public Integer getLevel( )
     {
@@ -76,11 +38,6 @@ public class Floor extends Facility
     public List< Room > getRooms( )
     {
         return rooms;
-    }
-
-    public Room getRoom( Integer roomNumber )
-    {
-        return getRooms( ).get( roomNumber );
     }
 
     public void setRooms( List< Room > rooms )

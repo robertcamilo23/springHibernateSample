@@ -8,7 +8,7 @@
         
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://173.194.243.115:3306/facility</property>
+        <property name="hibernate.connection.url">jdbc:mysql://173.194.243.115:3306/facilitiesp2</property>
         <property name="connection.username">root</property>
         <property name="connection.password">comp473</property>
         <!--<property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>-->

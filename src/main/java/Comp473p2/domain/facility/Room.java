@@ -19,25 +19,8 @@ public class Room extends Facility
     private Integer number;
 
     // ----------------------------
-    // Constructor
+    // Getters & Setters
     // ----------------------------
-
-    public Room( Integer number, Integer capacity, Detail detail )
-    {
-        this.setCapacity( capacity );
-        this.setNumber( number );
-        this.setDetail( detail );
-    }
-
-    // ----------------------------
-    // Methods
-    // ----------------------------
-
-    @Override
-    public String getFacilityInformation( )
-    {
-        return "Room ID: " + getFacilityId( ) + ", room number: " + getNumber( ) + ", detail: " + getDetail( ).getFacilityInformation( );
-    }
 
     public Integer getNumber( )
     {

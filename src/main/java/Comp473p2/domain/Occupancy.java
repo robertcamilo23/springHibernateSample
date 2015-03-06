@@ -24,19 +24,7 @@ public class Occupancy
     private String usage;
 
     // ----------------------------
-    // Constructor
-    // ----------------------------
-
-    public Occupancy( Date startDate, Date endDate, Integer totalCapacity, String usage )
-    {
-        this.setStartDate( startDate );
-        this.setEndDate( endDate );
-        this.setTotalCapacity( totalCapacity );
-        this.setUsage( usage );
-    }
-
-    // ----------------------------
-    // Methods
+    // Getters & Setters
     // ----------------------------
 
     public Integer getTotalCapacity( )

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Comp473p2.domain.facility">
+    <class name="Building" table="Buildings">
+        <id name="facilityId" column="id"/>
+        <property name="capacity" type="java.lang.Integer" column="capacity"/>
+        <property name="name" type="java.lang.String" column="name"/>
+        <property name="address" type="java.lang.String" column="address"/>
+        <list name="floors">
+            <key column="Buildings_id"></key>
+            <list-index base="0"/>
+            <one-to-many class="Comp473p2.domain.facility.Floor"/>
+        </list>
+        <!--<list name="occupancies">-->
+            <!--<key column="Buildings_id"/>-->
+            <!--<many-to-many column="Occupancies_id" class="Comp473p2.domain.Occupancy"/>-->
+        <!--</list>-->
+    </class>
+</hibernate-mapping>
