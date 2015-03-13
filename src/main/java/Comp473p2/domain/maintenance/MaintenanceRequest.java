@@ -24,6 +24,10 @@ public class MaintenanceRequest extends Maintenance
     // Constructor
     // ----------------------------
 
+    public MaintenanceRequest()
+    {
+
+    }
     public MaintenanceRequest( int facilityId )
     {
         super( facilityId );

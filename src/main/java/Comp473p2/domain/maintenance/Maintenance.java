@@ -25,6 +25,10 @@ public abstract class Maintenance
     // Constructor
     // ----------------------------
 
+    public Maintenance()
+    {
+
+    }
     public Maintenance( Integer facilityId )
     {
         this.facilityId = facilityId;

@@ -27,6 +27,11 @@ public class Inspection
     // Constructor
     // ----------------------------
 
+    public Inspection()
+    {
+
+    }
+
     public Inspection( InspectionType type, Date date )
     {
         this.type = type;

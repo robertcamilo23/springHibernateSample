@@ -31,10 +31,23 @@
                 <ref bean="occupancy"/>
             </list>
         </property>
+        <property name="inspections">
+            <list>
+                <ref bean="inspection"/>
+            </list>
+        </property>
+        <property name="maintenanceLog">
+            <list>
+                <ref bean="maintenancerequest"/>
+                <ref bean="maintenanceticket"/>
+            </list>
+        </property>
     </bean>
 
     <bean id="occupancy" class="Comp473p2.domain.Occupancy" scope="prototype"/>
-
+    <bean id="inspection" class="Comp473p2.domain.Inspection" scope="prototype"/>
+    <bean id="maintenanceticket" class="Comp473p2.domain.maintenance.MaintenanceTicket" scope="prototype"/>
+    <bean id="maintenancerequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype"/>
     <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
 
 </beans>

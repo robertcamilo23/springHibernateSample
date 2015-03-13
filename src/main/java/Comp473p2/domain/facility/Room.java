@@ -1,5 +1,6 @@
 package Comp473p2.domain.facility;
 
+import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.maintenance.Maintenance;
 
@@ -22,6 +23,7 @@ public class Room extends Facility
     // ----------------------------
 
     private Integer number;
+    private List<Inspection> inspections;
     private List< Occupancy > occupancies;
     private List<Maintenance> maintenanceLog;
 
@@ -37,6 +39,15 @@ public class Room extends Facility
     public void setNumber( Integer number )
     {
         this.number = number;
+    }
+
+    public List<Inspection> getInspection()
+    {
+        return inspections;
+    }
+
+    public void setInspections(List <Inspection> inspections) {
+        this.inspections = inspections;
     }
 
     public List< Occupancy > getOccupancies( )
