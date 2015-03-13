@@ -1,9 +1,5 @@
 package Comp473p2.domain.facility;
 
-import Comp473p2.domain.Occupancy;
-
-import java.util.List;
-
 /**
  * Facility.java
  *
@@ -22,7 +18,7 @@ public abstract class Facility
 
     private Integer facilityId;
     private Integer capacity;
-    //    private Detail detail;
+    private String description;
 
     // ----------------------------
     // Getters & Setters
@@ -48,5 +44,13 @@ public abstract class Facility
         this.capacity = capacity;
     }
 
+    public String getDescription( )
+    {
+        return description;
+    }
 
+    public void setDescription( String description )
+    {
+        this.description = description;
+    }
 }

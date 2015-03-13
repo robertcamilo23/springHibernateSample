@@ -8,7 +8,8 @@ import java.util.List;
 /**
  * Created by Jessica on 3/13/2015.
  */
-public class MaintenanceRequestDAO extends SessionManager implements FacilityDAOInterface<MaintenanceRequest, Integer > {
+public class MaintenanceRequestDAO extends SessionManager implements FacilityDAOInterface< MaintenanceRequest, Integer >
+{
 
     public void persist( MaintenanceRequest maintenanceRequest )
     {

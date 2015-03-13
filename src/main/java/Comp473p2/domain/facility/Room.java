@@ -23,9 +23,10 @@ public class Room extends Facility
     // ----------------------------
 
     private Integer number;
-    private List<Inspection> inspections;
+    private List< Detail > details;
+    private List< Inspection > inspections;
     private List< Occupancy > occupancies;
-    private List<Maintenance> maintenanceLog;
+    private List< Maintenance > maintenanceLog;
 
     // ----------------------------
     // Getters & Setters
@@ -41,12 +42,13 @@ public class Room extends Facility
         this.number = number;
     }
 
-    public List<Inspection> getInspection()
+    public List< Inspection > getInspection( )
     {
         return inspections;
     }
 
-    public void setInspections(List <Inspection> inspections) {
+    public void setInspections( List< Inspection > inspections )
+    {
         this.inspections = inspections;
     }
 
@@ -60,13 +62,23 @@ public class Room extends Facility
         this.occupancies = occupancies;
     }
 
-    public List<Maintenance> getMaintenanceLog()
+    public List< Maintenance > getMaintenanceLog( )
     {
         return maintenanceLog;
     }
 
-    public void setMaintenanceLog(List<Maintenance> maintenanceLog)
+    public void setMaintenanceLog( List< Maintenance > maintenanceLog )
     {
         this.maintenanceLog = maintenanceLog;
+    }
+
+    public List< Detail > getDetails( )
+    {
+        return details;
+    }
+
+    public void setDetails( List< Detail > details )
+    {
+        this.details = details;
     }
 }

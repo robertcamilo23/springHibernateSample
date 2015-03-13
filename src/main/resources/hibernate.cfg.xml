@@ -5,15 +5,15 @@
 
 <hibernate-configuration>
     <session-factory>
-        
+
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        
+
         <!--Local Database-->
         <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/facilitiesp2</property>-->
         <!--<property name="connection.username">root</property>-->
         <!--<property name="connection.password"></property>-->
-        
+
         <!--GoogleCloud Database-->
         <property name="hibernate.connection.url">jdbc:mysql://173.194.243.115:3306/facilitiesp2</property>
         <property name="connection.username">root</property>
@@ -25,10 +25,10 @@
         <!-- Echo all executed SQL statements -->
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
- 
+
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
-        
+
         <!-- Mapping resource configuration files -->
         <mapping resource="Building.hbm.xml"/>
         <mapping resource="Floor.hbm.xml"/>

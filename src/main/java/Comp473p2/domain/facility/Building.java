@@ -19,7 +19,7 @@ public class Building extends Facility
     // ----------------------------
 
     private String name;
-    private String address;
+    private Address address;
     private List< Floor > floors;
 
     // ----------------------------
@@ -36,16 +36,6 @@ public class Building extends Facility
         this.name = name;
     }
 
-    public String getAddress( )
-    {
-        return address;
-    }
-
-    public void setAddress( String address )
-    {
-        this.address = address;
-    }
-
     public List< Floor > getFloors( )
     {
         return floors;
@@ -54,5 +44,15 @@ public class Building extends Facility
     public void setFloors( List< Floor > floors )
     {
         this.floors = floors;
+    }
+
+    public Address getAddress( )
+    {
+        return address;
+    }
+
+    public void setAddress( Address address )
+    {
+        this.address = address;
     }
 }

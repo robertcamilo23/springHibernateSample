@@ -27,7 +27,7 @@ public class Inspection
     // Constructor
     // ----------------------------
 
-    public Inspection()
+    public Inspection( )
     {
 
     }

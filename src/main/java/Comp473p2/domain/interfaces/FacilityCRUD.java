@@ -21,7 +21,7 @@ public interface FacilityCRUD
     public void updateBuilding( Building building );
 
     public void deleteBuilding( Building building );
-    
+
     public void deleteBuilding( Integer buildingId );
 
     /** Floors table */
@@ -48,30 +48,46 @@ public interface FacilityCRUD
     public void deleteRoom( Integer roomId );
 
     /** Maintenance Request table */
-    public void createMaintenanceRequest(MaintenanceRequest maintenanceRequest);
-    public void readMaintenanceRequest(Integer requestId);
-    public void updateMaintenanceRequest(MaintenanceRequest maintenanceRequest);
-    public void deleteMaintenanceRequest(MaintenanceRequest maintenanceRequest);
-    public void deleteMaintenanceRequest(Integer requestId);
+    public void createMaintenanceRequest( MaintenanceRequest maintenanceRequest );
+
+    public void readMaintenanceRequest( Integer requestId );
+
+    public void updateMaintenanceRequest( MaintenanceRequest maintenanceRequest );
+
+    public void deleteMaintenanceRequest( MaintenanceRequest maintenanceRequest );
+
+    public void deleteMaintenanceRequest( Integer requestId );
 
     /** Maintenance Ticket table */
-    public void createMaintenanceTicket(MaintenanceTicket maintenanceTicket);
-    public void readMaintenanceTicket(Integer requestId);
-    public void updateMaintenanceTicket(MaintenanceTicket maintenanceTicket);
-    public void deleteMaintenanceTicket(MaintenanceTicket maintenanceTicket);
-    public void deleteMaintenanceTicket(Integer requestId);
+    public void createMaintenanceTicket( MaintenanceTicket maintenanceTicket );
+
+    public void readMaintenanceTicket( Integer requestId );
+
+    public void updateMaintenanceTicket( MaintenanceTicket maintenanceTicket );
+
+    public void deleteMaintenanceTicket( MaintenanceTicket maintenanceTicket );
+
+    public void deleteMaintenanceTicket( Integer requestId );
 
     /** Occupancy table */
-    public void createOccupancy(Occupancy occupancy);
-    public void readOccupancy(Integer occupancyId);
-    public void updateOccupancy( Occupancy occupancy);
-    public void deleteOccupancy(Occupancy occupancy);
-    public void deleteOccupancy(Integer occupancyId);
+    public void createOccupancy( Occupancy occupancy );
+
+    public void readOccupancy( Integer occupancyId );
+
+    public void updateOccupancy( Occupancy occupancy );
+
+    public void deleteOccupancy( Occupancy occupancy );
+
+    public void deleteOccupancy( Integer occupancyId );
 
     /** Inspection table */
-    public void createInspection(Inspection inspection);
-    public void readInspection(Integer inspectionId);
-    public void updateInspection(Inspection inspection);
-    public void deleteInspection(Inspection inspection);
-    public void deleteInspection(Integer inspectionId);
+    public void createInspection( Inspection inspection );
+
+    public void readInspection( Integer inspectionId );
+
+    public void updateInspection( Inspection inspection );
+
+    public void deleteInspection( Inspection inspection );
+
+    public void deleteInspection( Integer inspectionId );
 }

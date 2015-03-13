@@ -1,10 +1,5 @@
 package Comp473p2.domain.facility;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
 /**
  * Detail.java
  *
@@ -17,32 +12,60 @@ import java.util.List;
  */
 public class Detail
 {
-    private List< String > details;
+
+    private Integer detailID;
+    private String detail;
 
     public Detail( )
     {
-        details = new ArrayList< String >( );
     }
 
-    public Detail( String detail )
+    public Integer getDetailID( )
     {
-        details = new ArrayList< String >( );
-        details.add( detail );
+        return detailID;
     }
 
-    public void addFacilityDetail( String detail )
+    public void setDetailID( Integer detailID )
     {
-        String timestamp = new SimpleDateFormat( "yyyyMMdd_HHmmss" ).format( Calendar.getInstance( ).getTime( ) );
-        details.add( timestamp + " " + detail );
+        this.detailID = detailID;
     }
 
-    public String getFacilityInformation( )
+    public String getDetail( )
     {
-        String facilityInformation = "";
-        for ( String detail : details )
-        {
-            facilityInformation += detail + "\n";
-        }
-        return facilityInformation;
+        return detail;
     }
+
+    public void setDetail( String detail )
+    {
+        this.detail = detail;
+    }
+
+//    private List< String > details;
+//
+//    public Detail( )
+//    {
+//        details = new ArrayList< String >( );
+//    }
+//
+//    public Detail( String detail )
+//    {
+//        details = new ArrayList< String >( );
+//        details.add( detail );
+//    }
+//
+//    public void addFacilityDetail( String detail )
+//    {
+//        String timestamp = new SimpleDateFormat( "yyyyMMdd_HHmmss" ).format( Calendar.getInstance( ).getTime( ) );
+//        details.add( timestamp + " " + detail );
+//    }
+//
+//    public String getFacilityInformation( )
+//    {
+//        String facilityInformation = "";
+//        for ( String detail : details )
+//        {
+//            facilityInformation += detail + "\n";
+//        }
+//        return facilityInformation;
+//    }
 }

@@ -8,11 +8,12 @@ import java.util.List;
 /**
  * Created by Jessica on 3/13/2015.
  */
-public class MaintenanceTicketDAO extends SessionManager implements FacilityDAOInterface<MaintenanceTicket, Integer > {
+public class MaintenanceTicketDAO extends SessionManager implements FacilityDAOInterface< MaintenanceTicket, Integer >
+{
 
-    public void persist( MaintenanceTicket maintenanceTicket)
+    public void persist( MaintenanceTicket maintenanceTicket )
     {
-        getCurrentSession( ).save(maintenanceTicket);
+        getCurrentSession( ).save( maintenanceTicket );
     }
 
     public void update( MaintenanceTicket maintenanceTicket )

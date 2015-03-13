@@ -29,7 +29,7 @@ public class MaintenanceTicket extends Maintenance
     // Constructor
     // ----------------------------
 
-    public MaintenanceTicket()
+    public MaintenanceTicket( )
     {
 
     }
