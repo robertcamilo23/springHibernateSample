@@ -9,6 +9,7 @@ import Comp473p2.domain.facility.Room;
  */
 public interface FacilityCRUD
 {
+    /** Buildings table */
     public void createBuilding( Building building );
 
     public Building readBuilding( Integer buildingId );
@@ -18,20 +19,27 @@ public interface FacilityCRUD
     public void deleteBuilding( Building building );
     
     public void deleteBuilding( Integer buildingId );
-    
+
+    /** Floors table */
     public void createFloor( Floor floor );
 
-    public void readFloor( Integer floorId );
+    public Floor readFloor( Integer floorId );
 
     public void updateFloor( Floor floor );
 
     public void deleteFloor( Floor floor );
 
+    public void deleteFloor( Integer floorId );
+
+
+    /** Rooms table */
     public void createRoom( Room room );
 
-    public void readRoom( Integer roomId );
+    public Room readRoom( Integer roomId );
 
     public void updateRoom( Room room );
 
     public void deleteRoom( Room room );
+
+    public void deleteRoom( Integer roomId );
 }
