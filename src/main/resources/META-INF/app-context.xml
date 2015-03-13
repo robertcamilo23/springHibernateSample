@@ -10,11 +10,6 @@
     <context:component-scan base-package="Comp473p2"/>
 
     <bean id="building" class="Comp473p2.domain.facility.Building">
-        <property name="occupancies">
-            <list>
-                <ref bean="occupancy"/>
-            </list>
-        </property>
         <property name="floors">
             <list>
                 <ref bean="floor"/>
@@ -23,11 +18,6 @@
     </bean>
 
     <bean id="floor" class="Comp473p2.domain.facility.Floor" scope="prototype">
-        <property name="occupancies">
-            <list>
-                <ref bean="occupancy"/>
-            </list>
-        </property>
         <property name="rooms">
             <list>
                 <ref bean="room"/>

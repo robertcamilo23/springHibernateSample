@@ -1,5 +1,10 @@
 package Comp473p2.domain.facility;
 
+import Comp473p2.domain.Occupancy;
+import Comp473p2.domain.maintenance.Maintenance;
+
+import java.util.List;
+
 /**
  * Room.java
  *
@@ -17,6 +22,8 @@ public class Room extends Facility
     // ----------------------------
 
     private Integer number;
+    private List< Occupancy > occupancies;
+    private List<Maintenance> maintenanceLog;
 
     // ----------------------------
     // Getters & Setters
@@ -30,5 +37,25 @@ public class Room extends Facility
     public void setNumber( Integer number )
     {
         this.number = number;
+    }
+
+    public List< Occupancy > getOccupancies( )
+    {
+        return occupancies;
+    }
+
+    public void setOccupancies( List< Occupancy > occupancies )
+    {
+        this.occupancies = occupancies;
+    }
+
+    public List<Maintenance> getMaintenanceLog()
+    {
+        return maintenanceLog;
+    }
+
+    public void setMaintenanceLog(List<Maintenance> maintenanceLog)
+    {
+        this.maintenanceLog = maintenanceLog;
     }
 }

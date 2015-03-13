@@ -23,9 +23,6 @@ public abstract class Facility
     private Integer facilityId;
     private Integer capacity;
     //    private Detail detail;
-    //    private List< Maintenance > maintenanceLog;
-    private List< Occupancy > occupancies;
-    //    private List< Inspection > inspections;
 
     // ----------------------------
     // Getters & Setters
@@ -51,13 +48,5 @@ public abstract class Facility
         this.capacity = capacity;
     }
 
-    public List< Occupancy > getOccupancies( )
-    {
-        return occupancies;
-    }
 
-    public void setOccupancies( List< Occupancy > occupancies )
-    {
-        this.occupancies = occupancies;
-    }
 }
