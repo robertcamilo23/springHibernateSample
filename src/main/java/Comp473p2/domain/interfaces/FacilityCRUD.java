@@ -83,7 +83,7 @@ public interface FacilityCRUD
     /** Inspection table */
     public void createInspection( Inspection inspection );
 
-    public void readInspection( Integer inspectionId );
+    public Inspection readInspection( Integer inspectionId );
 
     public void updateInspection( Inspection inspection );
 

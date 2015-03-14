@@ -1,6 +1,8 @@
 package Comp473p2.client;
 
 import Comp473p2.domain.Occupancy;
+import Comp473p2.domain.Inspection;
+import Comp473p2.domain.enums.InspectionType;
 import Comp473p2.domain.facility.*;
 import Comp473p2.service.FacilityService;
 import org.springframework.context.ApplicationContext;
@@ -50,7 +52,8 @@ public class FacilityManagementClient
         Room[] rooms1 = { createRoom( context, 101, 25, "Room 101 description" ), createRoom( context, 102, 26, "Room 102 description" ), createRoom( context, 103, 26, "Room 103 description" ) };
         Room[] rooms2 = { createRoom( context, 201, 30, "Room 201 description" ), createRoom( context, 202, 15, "Room 202 description" ), createRoom( context, 203, 26, "Room 203 description" ) };
         Room[] rooms3 = { createRoom( context, 301, 50, "Room 301 description" ), createRoom( context, 302, 16, "Room 302 description" ), createRoom( context, 304, 26, "Room 303 description" ) };
-        rooms3[ 0 ].setOccupancies( getOccupanciesSample( context ) );
+        rooms3[0].setOccupancies(getOccupanciesSample(context));
+        rooms3[0].setInspections(getInspections(context));
         Room[] rooms4 = { createRoom( context, 401, 22, "Room 401 description" ), createRoom( context, 402, 61, "Room 402 description" ), createRoom( context, 404, 26, "Room 403 description" ) };
         Room[] rooms5 = { createRoom( context, 501, 18, "Room 501 description" ), createRoom( context, 502, 10, "Room 502 description" ), createRoom( context, 504, 26, "Room 503 description" ) };
 
@@ -74,6 +77,30 @@ public class FacilityManagementClient
                                "IL", 60611, "7734456945", floors );
     }
 
+    private static List<Inspection> getInspections(ApplicationContext context) {
+        List<Inspection> inspections = new ArrayList<Inspection>();
+        inspections.add(createInspection(context, InspectionType.ELECTRICAL, "2015-03-15"));
+        inspections.add(createInspection(context, InspectionType.ELEVATOR, "2015-03-05"));
+        inspections.add(createInspection(context, InspectionType.FIRE, "2015-02-15"));
+        return inspections;
+    }
+
+    public static Inspection createInspection( ApplicationContext context, InspectionType type, String dateReceived ) {
+        Inspection inspection = ( Inspection ) context.getBean( "inspection" );
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+
+        try {
+            date = format.parse(dateReceived);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        inspection.setDate(date);
+        inspection.setType(type);
+        return inspection;
+    }
+
     public static Room createRoom( ApplicationContext context, Integer number, Integer capacity, String description )
     {
         Room room = ( Room ) context.getBean( "room" );
@@ -93,8 +120,8 @@ public class FacilityManagementClient
         }
         floor.setDescription( description );
         floor.setCapacity( capacity );
-        floor.setLevel( level );
-        floor.setRooms( rooms );
+        floor.setLevel(level);
+        floor.setRooms(rooms);
         return floor;
     }
 
@@ -117,9 +144,9 @@ public class FacilityManagementClient
             capacity += floor.getCapacity( );
         }
         building.setCapacity( capacity );
-        building.setFloors( floors );
+        building.setFloors(floors);
         building.setName( upperCaseTrimmedWhitesSpaces( name ) );
-        building.setAddress( address );
+        building.setAddress(address );
         building.setDescription( description );
         return building;
     }
@@ -131,7 +158,11 @@ public class FacilityManagementClient
         occupancy.setTotalCapacity( totalCapacity );
 
         SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd" );
-        Date date = new Date( );
+        Date date = new Date();
+        try { date = format.parse(startDate); } catch (ParseException e) {
+            e.printStackTrace(); }
+        occupancy.setStartDate(date);
+
         try
         {
             date = format.parse( startDate );
@@ -152,7 +183,7 @@ public class FacilityManagementClient
         }
         occupancy.setEndDate( date );
 
-        occupancy.setUsage( usage );
+        occupancy.setUsage(usage);
         return occupancy;
     }
 

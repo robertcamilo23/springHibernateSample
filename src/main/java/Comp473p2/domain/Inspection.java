@@ -20,6 +20,7 @@ public class Inspection
     // Attributes
     // ----------------------------
 
+    private Integer inspectionId;
     private InspectionType type;
     private Date date;
 
@@ -29,13 +30,13 @@ public class Inspection
 
     public Inspection( )
     {
-
     }
 
-    public Inspection( InspectionType type, Date date )
+    public Inspection( InspectionType type, Date date, Integer id )
     {
         this.type = type;
         this.date = date;
+        this.inspectionId = id;
     }
 
     public Date getDate( )
@@ -57,4 +58,8 @@ public class Inspection
     {
         type = newType;
     }
+
+    public Integer getInspectionId( ) { return inspectionId; }
+
+    public void setInspectionId( Integer newInspectionID ) { inspectionId = newInspectionID; }
 }

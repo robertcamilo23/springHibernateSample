@@ -43,7 +43,7 @@ public class Room extends Facility
         this.number = number;
     }
 
-    public List< Inspection > getInspection( )
+    public List< Inspection > getInspections( )
     {
         return inspections;
     }

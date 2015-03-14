@@ -10,9 +10,9 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <!--Local Database-->
-        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/facilitiesp2</property>-->
+        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test</property>-->
         <!--<property name="connection.username">root</property>-->
-        <!--<property name="connection.password"></property>-->
+        <!--<property name="connection.password">EdWaRd</property>-->
 
         <!--GoogleCloud Database-->
         <property name="hibernate.connection.url">jdbc:mysql://173.194.243.115:3306/facilitiesp2</property>
@@ -36,6 +36,7 @@
         <mapping resource="Address.hbm.xml"/>
         <mapping resource="Detail.hbm.xml"/>
         <mapping resource="Occupancy.hbm.xml"/>
+        <mapping resource="Inspection.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

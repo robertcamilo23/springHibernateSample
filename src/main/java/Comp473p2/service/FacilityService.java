@@ -21,6 +21,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     private BuildingDAO buildingDAO = new BuildingDAO( );
     private FloorDAO floorDAO = new FloorDAO( );
     private RoomDAO roomDAO = new RoomDAO( );
+    private InspectionDAO inspectionDAO = new InspectionDAO();
     private DetailDAO detailDAO = new DetailDAO( );
     private OccupancyDAO occupancyDAO = new OccupancyDAO();
 
@@ -219,27 +220,36 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     /** Inspections table */
     public void createInspection( Inspection inspection )
     {
-
+        inspectionDAO.openCurrentSessionWithTransaction();
+        inspectionDAO.update(inspection);
+        inspectionDAO.closeCurrentSessionWithTransaction();
     }
 
-    public void readInspection( Integer inspectionId )
+    public Inspection readInspection( Integer inspectionId )
     {
-
+        inspectionDAO.openCurrentSession();
+        Inspection inspection = inspectionDAO.findById(inspectionId);
+        inspectionDAO.closeCurrentSession();
+        return inspection;
     }
 
     public void updateInspection( Inspection inspection )
     {
-
+        inspectionDAO.openCurrentSessionWithTransaction();
+        inspectionDAO.update(inspection);
+        inspectionDAO.closeCurrentSessionWithTransaction();
     }
 
-    public void deleteInspection( Inspection inspection )
+    public void deleteInspection(Inspection inspection )
     {
-
+        inspectionDAO.openCurrentSessionWithTransaction();
+        inspectionDAO.update(inspection);
+        inspectionDAO.closeCurrentSessionWithTransaction();
     }
 
     public void deleteInspection( Integer inspectionId )
     {
-
+        deleteInspection(readInspection(inspectionId));
     }
 
     /** Details table */
