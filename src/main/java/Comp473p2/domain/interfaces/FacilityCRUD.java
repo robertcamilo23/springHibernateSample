@@ -72,7 +72,7 @@ public interface FacilityCRUD
     /** Occupancy table */
     public void createOccupancy( Occupancy occupancy );
 
-    public void readOccupancy( Integer occupancyId );
+    public Occupancy readOccupancy( Integer occupancyId );
 
     public void updateOccupancy( Occupancy occupancy );
 

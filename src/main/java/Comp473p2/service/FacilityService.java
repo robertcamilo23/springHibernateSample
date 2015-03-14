@@ -1,9 +1,6 @@
 package Comp473p2.service;
 
-import Comp473p2.dao.BuildingDAO;
-import Comp473p2.dao.DetailDAO;
-import Comp473p2.dao.FloorDAO;
-import Comp473p2.dao.RoomDAO;
+import Comp473p2.dao.*;
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.facility.Building;
@@ -25,6 +22,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     private FloorDAO floorDAO = new FloorDAO( );
     private RoomDAO roomDAO = new RoomDAO( );
     private DetailDAO detailDAO = new DetailDAO( );
+    private OccupancyDAO occupancyDAO = new OccupancyDAO();
 
     /** Buildings */
     public void createBuilding( Building building )
@@ -71,29 +69,29 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
 
     public Floor readFloor( Integer floorId )
     {
-        floorDAO.openCurrentSession( );
+        floorDAO.openCurrentSession();
         Floor floor = floorDAO.findById( floorId );
-        floorDAO.closeCurrentSession( );
+        floorDAO.closeCurrentSession();
         return floor;
     }
 
     public void updateFloor( Floor floor )
     {
-        floorDAO.openCurrentSessionWithTransaction( );
+        floorDAO.openCurrentSessionWithTransaction();
         floorDAO.update( floor );
-        floorDAO.closeCurrentSessionWithTransaction( );
+        floorDAO.closeCurrentSessionWithTransaction();
     }
 
     public void deleteFloor( Floor floor )
     {
         floorDAO.openCurrentSessionWithTransaction( );
-        floorDAO.delete( floor );
+        floorDAO.delete(floor);
         floorDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteFloor( Integer floorId )
     {
-        deleteFloor( readFloor( floorId ) );
+        deleteFloor(readFloor(floorId));
     }
 
     /** Rooms */
@@ -101,37 +99,37 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     {
         roomDAO.openCurrentSessionWithTransaction( );
         roomDAO.persist( room );
-        roomDAO.closeCurrentSessionWithTransaction( );
+        roomDAO.closeCurrentSessionWithTransaction();
     }
 
     public Room readRoom( Integer roomId )
     {
-        roomDAO.openCurrentSession( );
+        roomDAO.openCurrentSession();
         Room room = roomDAO.findById( roomId );
-        roomDAO.closeCurrentSession( );
+        roomDAO.closeCurrentSession();
         return room;
     }
 
     public void updateRoom( Room room )
     {
-        roomDAO.openCurrentSessionWithTransaction( );
+        roomDAO.openCurrentSessionWithTransaction();
         roomDAO.update( room );
-        roomDAO.closeCurrentSessionWithTransaction( );
+        roomDAO.closeCurrentSessionWithTransaction();
     }
 
     public void deleteRoom( Room room )
     {
         roomDAO.openCurrentSessionWithTransaction( );
-        roomDAO.delete( room );
+        roomDAO.delete(room);
         roomDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteRoom( Integer roomId )
     {
-        deleteRoom( readRoom( roomId ) );
+        deleteRoom(readRoom(roomId));
     }
 
-    /** Maintenance Request table */
+    /** MaintenanceRequests table */
     public void createMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
 
@@ -157,7 +155,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
 
     }
 
-    /** Maintenance Ticket table */
+    /** MaintenanceTickets table */
     public void createMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
 
@@ -183,33 +181,42 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
 
     }
 
-    /** Occupancy table */
+    /** Occupancies table */
     public void createOccupancy( Occupancy occupancy )
     {
-
+        occupancyDAO.openCurrentSessionWithTransaction( );
+        occupancyDAO.persist( occupancy );
+        occupancyDAO.closeCurrentSessionWithTransaction( );
     }
 
-    public void readOccupancy( Integer occupancyId )
+    public Occupancy readOccupancy( Integer occupancyId )
     {
-
+        occupancyDAO.openCurrentSession();
+        Occupancy occupancy = occupancyDAO.findById( occupancyId );
+        occupancyDAO.closeCurrentSession();
+        return occupancy;
     }
 
     public void updateOccupancy( Occupancy occupancy )
     {
-
+        occupancyDAO.openCurrentSessionWithTransaction( );
+        occupancyDAO.update (occupancy );
+        occupancyDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteOccupancy( Occupancy occupancy )
     {
-
+        occupancyDAO.openCurrentSessionWithTransaction( );
+        occupancyDAO.delete(occupancy);
+        occupancyDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteOccupancy( Integer occupancyId )
     {
-
+        deleteOccupancy(readOccupancy(occupancyId));
     }
 
-    /** Inspection table */
+    /** Inspections table */
     public void createInspection( Inspection inspection )
     {
 
@@ -235,6 +242,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
 
     }
 
+    /** Details table */
     public void createDetail( Detail detail )
     {
         detailDAO.openCurrentSessionWithTransaction( );
