@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<!--Reference: http://www.tutorialspoint.com/hibernate/hibernate_list_mapping.htm-->
+
+<hibernate-mapping package="Comp473p2.domain.facility">
+    <class name="Address" table="Addresses">
+        <id name="addressId" column="Buildings_id">
+            <generator class="native"/>
+        </id>
+        <property name="addressLine1" type="java.lang.String" column="address_line_1"/>
+        <property name="addressLine2" type="java.lang.String" column="address_line_2"/>
+        <property name="city" type="java.lang.String" column="city"/>
+        <property name="state" type="java.lang.String" column="state"/>
+        <property name="zip" type="java.lang.Integer" column="zip"/>
+        <property name="phoneNumber" type="java.lang.String" column="phone_number"/>
+    </class>
+</hibernate-mapping>

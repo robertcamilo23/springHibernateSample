@@ -10,14 +10,14 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 
         <!--Local Database-->
-        <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/facilitiesp2</property>-->
-        <!--<property name="connection.username">root</property>-->
-        <!--<property name="connection.password"></property>-->
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/facilitiesp2</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
 
         <!--GoogleCloud Database-->
-        <property name="hibernate.connection.url">jdbc:mysql://173.194.243.115:3306/facilitiesp2</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">comp473</property>
+        <!--<property name="hibernate.connection.url">jdbc:mysql://173.194.243.115:3306/facilitiesp2</property>-->
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password">comp473</property>-->
 
         <!-- SQL dialect - generate SQL for a particular database -->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -33,6 +33,7 @@
         <mapping resource="Building.hbm.xml"/>
         <mapping resource="Floor.hbm.xml"/>
         <mapping resource="Room.hbm.xml"/>
+        <mapping resource="Address.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -10,17 +10,14 @@
         <id name="facilityId" column="id">
             <generator class="native"/>
         </id>
+        <property name="description" type="java.lang.String" column="description"/>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="name" type="java.lang.String" column="name"/>
-        <property name="address" type="java.lang.String" column="address"/>
+        <one-to-one name="address" class="Comp473p2.domain.facility.Address" cascade="save-update"/>
         <list name="floors" cascade="all">
             <key column="Buildings_id" foreign-key="Comp473p2.domain.facility.Building" not-null="true"/>
             <list-index column="idx"/>
             <one-to-many class="Comp473p2.domain.facility.Floor"/>
         </list>
-        <!--<list name="occupancies">-->
-        <!--<key column="Buildings_id"/>-->
-        <!--<many-to-many column="Occupancies_id" class="Comp473p2.domain.Occupancy"/>-->
-        <!--</list>-->
     </class>
 </hibernate-mapping>

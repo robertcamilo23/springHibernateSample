@@ -8,6 +8,7 @@
         <id name="facilityId" column="id">
             <generator class="native"/>
         </id>
+        <property name="description" type="java.lang.String" column="description"/>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="number" type="java.lang.Integer" column="number"/>
         <!--<list name="occupancies">-->

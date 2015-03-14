@@ -11,7 +11,7 @@ public class Address
     private String city;
     private String state;
     private Integer zip;
-    private Integer phoneNumber;
+    private String phoneNumber;
 
     public Address( )
     {
@@ -77,12 +77,12 @@ public class Address
         this.zip = zip;
     }
 
-    public Integer getPhoneNumber( )
+    public String getPhoneNumber( )
     {
         return phoneNumber;
     }
 
-    public void setPhoneNumber( Integer phoneNumber )
+    public void setPhoneNumber( String phoneNumber )
     {
         this.phoneNumber = phoneNumber;
     }

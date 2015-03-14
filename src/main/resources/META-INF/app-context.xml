@@ -49,5 +49,6 @@
     <bean id="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" scope="prototype"/>
     <bean id="maintenanceRequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype"/>
     <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
+    <bean id="address" class="Comp473p2.domain.facility.Address" scope="prototype"/>
 
 </beans>

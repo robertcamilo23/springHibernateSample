@@ -1,9 +1,6 @@
 package Comp473p2.client;
 
-import Comp473p2.domain.facility.Building;
-import Comp473p2.domain.facility.Facility;
-import Comp473p2.domain.facility.Floor;
-import Comp473p2.domain.facility.Room;
+import Comp473p2.domain.facility.*;
 import Comp473p2.service.FacilityService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -27,18 +24,18 @@ public class FacilityManagementClient
     private static Building getBuildingSample( ApplicationContext context )
     {
 
-        Room[] rooms1 = { createRoom( context, 101, 25 ), createRoom( context, 102, 26 ), createRoom( context, 103, 26 ) };
-        Room[] rooms2 = { createRoom( context, 201, 30 ), createRoom( context, 202, 15 ), createRoom( context, 203, 26 ) };
-        Room[] rooms3 = { createRoom( context, 301, 50 ), createRoom( context, 302, 16 ), createRoom( context, 304, 26 ) };
-        Room[] rooms4 = { createRoom( context, 401, 22 ), createRoom( context, 402, 61 ), createRoom( context, 404, 26 ) };
-        Room[] rooms5 = { createRoom( context, 501, 18 ), createRoom( context, 502, 10 ), createRoom( context, 504, 26 ) };
+        Room[] rooms1 = { createRoom( context, 101, 25, "Room 101 description" ), createRoom( context, 102, 26, "Room 102 description" ), createRoom( context, 103, 26, "Room 103 description" ) };
+        Room[] rooms2 = { createRoom( context, 201, 30, "Room 201 description" ), createRoom( context, 202, 15, "Room 202 description" ), createRoom( context, 203, 26, "Room 203 description" ) };
+        Room[] rooms3 = { createRoom( context, 301, 50, "Room 301 description" ), createRoom( context, 302, 16, "Room 302 description" ), createRoom( context, 304, 26, "Room 303 description" ) };
+        Room[] rooms4 = { createRoom( context, 401, 22, "Room 401 description" ), createRoom( context, 402, 61, "Room 402 description" ), createRoom( context, 404, 26, "Room 403 description" ) };
+        Room[] rooms5 = { createRoom( context, 501, 18, "Room 501 description" ), createRoom( context, 502, 10, "Room 502 description" ), createRoom( context, 504, 26, "Room 503 description" ) };
 
         Facility floor1, floor2, floor3, floor4, floor5;
-        floor1 = createFloor( context, 1, Arrays.asList( rooms1 ) );
-        floor2 = createFloor( context, 2, Arrays.asList( rooms2 ) );
-        floor3 = createFloor( context, 3, Arrays.asList( rooms3 ) );
-        floor4 = createFloor( context, 4, Arrays.asList( rooms4 ) );
-        floor5 = createFloor( context, 5, Arrays.asList( rooms5 ) );
+        floor1 = createFloor( context, 1, "Floor 1 description", Arrays.asList( rooms1 ) );
+        floor2 = createFloor( context, 2, "Floor 2 description", Arrays.asList( rooms2 ) );
+        floor3 = createFloor( context, 3, "Floor 3 description", Arrays.asList( rooms3 ) );
+        floor4 = createFloor( context, 4, "Floor 4 description", Arrays.asList( rooms4 ) );
+        floor5 = createFloor( context, 5, "Floor 5 description", Arrays.asList( rooms5 ) );
 
         List< Floor > floors = new ArrayList< Floor >( );
         floors.add( ( Floor ) floor1 );
@@ -47,18 +44,20 @@ public class FacilityManagementClient
         floors.add( ( Floor ) floor4 );
         floors.add( ( Floor ) floor5 );
 
-        return createBuilding( context, "Corboy        Law    center   ", "25   E.    Pearson  St. ", floors );
+        return createBuilding( context, "Building description", "Corboy        Law    center   ", "25   E.    Pearson  St. ", "", "Chicago",
+                               "IL", 60611, "7734456945", floors );
     }
 
-    public static Room createRoom( ApplicationContext context, Integer number, Integer capacity )
+    public static Room createRoom( ApplicationContext context, Integer number, Integer capacity, String description )
     {
         Room room = ( Room ) context.getBean( "room" );
         room.setNumber( number );
         room.setCapacity( capacity );
+        room.setDescription( description );
         return room;
     }
 
-    public static Floor createFloor( ApplicationContext context, Integer level, List< Room > rooms )
+    public static Floor createFloor( ApplicationContext context, Integer level, String description, List< Room > rooms )
     {
         Floor floor = ( Floor ) context.getBean( "floor" );
         Integer capacity = 0;
@@ -66,14 +65,25 @@ public class FacilityManagementClient
         {
             capacity += room.getCapacity( );
         }
+        floor.setDescription( description );
         floor.setCapacity( capacity );
         floor.setLevel( level );
         floor.setRooms( rooms );
         return floor;
     }
 
-    public static Building createBuilding( ApplicationContext context, String name, String address, List< Floor > floors )
+    public static Building createBuilding( ApplicationContext context, String description, String name,
+                                           String addressLine1, String addressLine2, String city, String state,
+                                           Integer zip, String phoneNumber, List< Floor > floors )
     {
+        Address address = ( Address ) context.getBean( "address" );
+        address.setAddressLine1( upperCaseTrimmedWhitesSpaces( addressLine1 ) );
+        address.setAddressLine2( upperCaseTrimmedWhitesSpaces( addressLine2 ) );
+        address.setCity( upperCaseTrimmedWhitesSpaces( city ) );
+        address.setState( upperCaseTrimmedWhitesSpaces( state ) );
+        address.setZip( zip );
+        address.setPhoneNumber( phoneNumber );
+
         Building building = ( Building ) context.getBean( "building" );
         Integer capacity = 0;
         for ( Floor floor : floors )
@@ -82,8 +92,14 @@ public class FacilityManagementClient
         }
         building.setCapacity( capacity );
         building.setFloors( floors );
-        building.setName( name.toUpperCase( ).trim( ).replaceAll( " +", " " ) );
-        building.setAddress( address.toUpperCase( ).trim( ).replaceAll( " +", " " ) );
+        building.setName( upperCaseTrimmedWhitesSpaces( name ) );
+        building.setAddress( address );
+        building.setDescription( description );
         return building;
+    }
+
+    public static String upperCaseTrimmedWhitesSpaces( String s )
+    {
+        return s.toUpperCase( ).trim( ).replaceAll( " +", " " );
     }
 }
