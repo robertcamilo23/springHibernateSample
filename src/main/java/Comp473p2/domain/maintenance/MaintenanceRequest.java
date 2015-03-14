@@ -44,14 +44,14 @@ public class MaintenanceRequest extends Maintenance
         return requestId;
     }
 
-    public String getDescription( )
-    {
-        return description;
-    }
-
     public void setRequestId( Integer requestId )
     {
         this.requestId = requestId;
+    }
+
+    public String getDescription( )
+    {
+        return description;
     }
 
     public void setDescription( String description )

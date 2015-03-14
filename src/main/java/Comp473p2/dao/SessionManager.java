@@ -25,6 +25,15 @@ public abstract class SessionManager
 
     private Transaction currentTransaction;
 
+    private static SessionFactory getSessionFactory( )
+    {
+        Configuration configuration = new Configuration( ).configure( );
+        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder( )
+                .applySettings( configuration.getProperties( ) );
+        SessionFactory sessionFactory = configuration.buildSessionFactory( builder.build( ) );
+        return sessionFactory;
+    }
+
     public Session openCurrentSession( )
     {
         currentSession = getSessionFactory( ).openSession( );
@@ -47,15 +56,6 @@ public abstract class SessionManager
     {
         currentTransaction.commit( );
         currentSession.close( );
-    }
-
-    private static SessionFactory getSessionFactory( )
-    {
-        Configuration configuration = new Configuration( ).configure( );
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder( )
-                .applySettings( configuration.getProperties( ) );
-        SessionFactory sessionFactory = configuration.buildSessionFactory( builder.build( ) );
-        return sessionFactory;
     }
 
     public org.hibernate.Session getCurrentSession( )

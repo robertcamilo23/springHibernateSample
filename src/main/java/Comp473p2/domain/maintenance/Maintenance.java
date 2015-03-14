@@ -45,14 +45,14 @@ public abstract class Maintenance
         return status;
     }
 
-    public Integer getFacilityId( )
-    {
-        return facilityId;
-    }
-
     public void setStatus( MaintenanceStatus currentStatus )
     {
         status = currentStatus;
+    }
+
+    public Integer getFacilityId( )
+    {
+        return facilityId;
     }
 
     public void setFacilityId( Integer facilityId )

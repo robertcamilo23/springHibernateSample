@@ -55,29 +55,14 @@ public class MaintenanceTicket extends Maintenance
         return cost * hoursBilled;
     }
 
-    public void setTicketId( Integer ticketId )
-    {
-        this.ticketId = ticketId;
-    }
-
-    public void setCost( Double cost )
-    {
-        this.cost = cost;
-    }
-
-    public void setHoursBilled( Double hoursBilled )
-    {
-        this.hoursBilled = hoursBilled;
-    }
-
-    public void setMaintenanceRequest( MaintenanceRequest fulfills )
-    {
-        this.fulfills = fulfills;
-    }
-
     public Integer getTicketId( )
     {
         return ticketId;
+    }
+
+    public void setTicketId( Integer ticketId )
+    {
+        this.ticketId = ticketId;
     }
 
     public Double getCost( )
@@ -85,13 +70,28 @@ public class MaintenanceTicket extends Maintenance
         return cost;
     }
 
+    public void setCost( Double cost )
+    {
+        this.cost = cost;
+    }
+
     public Double getHoursBilled( )
     {
         return hoursBilled;
     }
 
+    public void setHoursBilled( Double hoursBilled )
+    {
+        this.hoursBilled = hoursBilled;
+    }
+
     public MaintenanceRequest getMaintenanceRequest( )
     {
         return fulfills;
+    }
+
+    public void setMaintenanceRequest( MaintenanceRequest fulfills )
+    {
+        this.fulfills = fulfills;
     }
 }

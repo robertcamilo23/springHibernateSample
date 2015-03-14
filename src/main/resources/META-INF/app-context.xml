@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
@@ -12,7 +12,7 @@
     <bean id="building" class="Comp473p2.domain.facility.Building">
         <property name="floors">
             <list>
-                <ref bean="floor"/>
+                <!--<ref bean="floor"/>-->
             </list>
         </property>
     </bean>
@@ -20,7 +20,7 @@
     <bean id="floor" class="Comp473p2.domain.facility.Floor" scope="prototype">
         <property name="rooms">
             <list>
-                <ref bean="room"/>
+                <!--<ref bean="room"/>-->
             </list>
         </property>
     </bean>
@@ -28,18 +28,23 @@
     <bean id="room" class="Comp473p2.domain.facility.Room" scope="prototype">
         <property name="occupancies">
             <list>
-                <ref bean="occupancy"/>
+                <!--<ref bean="occupancy"/>-->
             </list>
         </property>
         <property name="inspections">
             <list>
-                <ref bean="inspection"/>
+                <!--<ref bean="inspection"/>-->
             </list>
+        </property>
+        <property name="details">
+            <set>
+                <!--<ref bean="detail"/>-->
+            </set>
         </property>
         <property name="maintenanceLog">
             <list>
-                <ref bean="maintenanceRequest"/>
-                <ref bean="maintenanceTicket"/>
+                <!--<ref bean="maintenanceRequest"/>-->
+                <!--<ref bean="maintenanceTicket"/>-->
             </list>
         </property>
     </bean>
@@ -48,7 +53,9 @@
     <bean id="inspection" class="Comp473p2.domain.Inspection" scope="prototype"/>
     <bean id="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" scope="prototype"/>
     <bean id="maintenanceRequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype"/>
-    <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
     <bean id="address" class="Comp473p2.domain.facility.Address" scope="prototype"/>
+    <bean id="detail" class="Comp473p2.domain.facility.Detail" scope="prototype"/>
+
+    <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
 
 </beans>

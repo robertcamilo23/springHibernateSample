@@ -1,5 +1,7 @@
 package Comp473p2.domain.facility;
 
+import java.util.Set;
+
 /**
  * Detail.java
  *
@@ -15,6 +17,7 @@ public class Detail
 
     private Integer detailID;
     private String detail;
+    private Set< Room > rooms;
 
     public Detail( )
     {
@@ -38,6 +41,16 @@ public class Detail
     public void setDetail( String detail )
     {
         this.detail = detail;
+    }
+
+    public Set< Room > getRooms( )
+    {
+        return rooms;
+    }
+
+    public void setRooms( Set< Room > rooms )
+    {
+        this.rooms = rooms;
     }
 
 //    private List< String > details;

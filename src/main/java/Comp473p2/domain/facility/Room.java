@@ -5,6 +5,7 @@ import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.maintenance.Maintenance;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Room.java
@@ -23,7 +24,7 @@ public class Room extends Facility
     // ----------------------------
 
     private Integer number;
-    private List< Detail > details;
+    private Set< Detail > details;
     private List< Inspection > inspections;
     private List< Occupancy > occupancies;
     private List< Maintenance > maintenanceLog;
@@ -72,13 +73,18 @@ public class Room extends Facility
         this.maintenanceLog = maintenanceLog;
     }
 
-    public List< Detail > getDetails( )
+    public Set< Detail > getDetails( )
     {
         return details;
     }
 
-    public void setDetails( List< Detail > details )
+    public void setDetails( Set< Detail > details )
     {
         this.details = details;
+    }
+
+    public void addDetail( Detail detail )
+    {
+        this.details.add( detail );
     }
 }

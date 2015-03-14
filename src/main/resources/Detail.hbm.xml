@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Comp473p2.domain.facility">
+    <class name="Detail" table="Details">
+        <id name="detailID" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="detail" type="java.lang.String" column="detail"/>
+        <set name="rooms" table="RoomsXDetails" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="Details_id"/>
+            </key>
+            <many-to-many entity-name="Comp473p2.domain.facility.Room">
+                <column name="Rooms_id"/>
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

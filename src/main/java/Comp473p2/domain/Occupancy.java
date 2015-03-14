@@ -28,9 +28,15 @@ public class Occupancy
     // Getters & Setters
     // ----------------------------
 
-    public Integer getOccupancyId() { return occupancyId; }
+    public Integer getOccupancyId( )
+    {
+        return occupancyId;
+    }
 
-    public void setOccupancyId(Integer occupancyId) { this.occupancyId = occupancyId; }
+    public void setOccupancyId( Integer occupancyId )
+    {
+        this.occupancyId = occupancyId;
+    }
 
     public Integer getTotalCapacity( )
     {

@@ -21,8 +21,27 @@ public class FacilityManagementClient
     public static void main( String[] args )
     {
         ApplicationContext context = new ClassPathXmlApplicationContext( "META-INF/app-context.xml" );
+//        addRoomDetail( context, 5, 1 );
+        addBuilding( context );
+    }
+
+    private static void addRoomDetail( ApplicationContext context, Integer detailId, Integer roomId )
+    {
+        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        Detail detail = facilityService.readDetail( detailId );
+        facilityService.addRoomDetail( roomId, detail );
+    }
+
+    private static void addBuilding( ApplicationContext context )
+    {
         FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         facilityService.createBuilding( getBuildingSample( context ) );
+    }
+
+    private static Detail getDetailSample( ApplicationContext context )
+    {
+        Detail detail = ( Detail ) context.getBean( "detail" );
+        return detail;
     }
 
     private static Building getBuildingSample( ApplicationContext context )
@@ -31,7 +50,7 @@ public class FacilityManagementClient
         Room[] rooms1 = { createRoom( context, 101, 25, "Room 101 description" ), createRoom( context, 102, 26, "Room 102 description" ), createRoom( context, 103, 26, "Room 103 description" ) };
         Room[] rooms2 = { createRoom( context, 201, 30, "Room 201 description" ), createRoom( context, 202, 15, "Room 202 description" ), createRoom( context, 203, 26, "Room 203 description" ) };
         Room[] rooms3 = { createRoom( context, 301, 50, "Room 301 description" ), createRoom( context, 302, 16, "Room 302 description" ), createRoom( context, 304, 26, "Room 303 description" ) };
-        rooms3[0].setOccupancies(getOccupanciesSample(context));
+        rooms3[ 0 ].setOccupancies( getOccupanciesSample( context ) );
         Room[] rooms4 = { createRoom( context, 401, 22, "Room 401 description" ), createRoom( context, 402, 61, "Room 402 description" ), createRoom( context, 404, 26, "Room 403 description" ) };
         Room[] rooms5 = { createRoom( context, 501, 18, "Room 501 description" ), createRoom( context, 502, 10, "Room 502 description" ), createRoom( context, 504, 26, "Room 503 description" ) };
 
@@ -52,7 +71,7 @@ public class FacilityManagementClient
         //return createBuilding( context, "Building description", "Corboy        Law    center   ", "25   E.    Pearson  St. ", "", "Chicago",
         //                       "IL", 60611, "7734456945", floors );
         return createBuilding( context, "Building description", "Lewis Towers  ", "55   E.    Pearson  St. ", "", "Chicago",
-                "IL", 60611, "7734456945", floors );
+                               "IL", 60611, "7734456945", floors );
     }
 
     public static Room createRoom( ApplicationContext context, Integer number, Integer capacity, String description )
@@ -105,34 +124,48 @@ public class FacilityManagementClient
         return building;
     }
 
-    public static Occupancy createOccupancy(ApplicationContext context, Integer totalCapacity, String startDate,
-                                            String endDate, String usage)
+    public static Occupancy createOccupancy( ApplicationContext context, Integer totalCapacity, String startDate,
+                                             String endDate, String usage )
     {
         Occupancy occupancy = ( Occupancy ) context.getBean( "occupancy" );
-        occupancy.setTotalCapacity(totalCapacity);
+        occupancy.setTotalCapacity( totalCapacity );
 
         SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd" );
-        Date date = new Date();
-        try { date = format.parse(startDate); } catch (ParseException e) { e.printStackTrace(); }
-        occupancy.setStartDate(date);
+        Date date = new Date( );
+        try
+        {
+            date = format.parse( startDate );
+        }
+        catch ( ParseException e )
+        {
+            e.printStackTrace( );
+        }
+        occupancy.setStartDate( date );
 
-        try { date = format.parse(endDate); } catch (ParseException e) { e.printStackTrace(); }
-        occupancy.setEndDate(date);
+        try
+        {
+            date = format.parse( endDate );
+        }
+        catch ( ParseException e )
+        {
+            e.printStackTrace( );
+        }
+        occupancy.setEndDate( date );
 
-        occupancy.setUsage(usage);
+        occupancy.setUsage( usage );
         return occupancy;
     }
 
-    private static List<Occupancy> getOccupanciesSample(ApplicationContext context)
+    private static List< Occupancy > getOccupanciesSample( ApplicationContext context )
     {
-        Occupancy occupancy1 = createOccupancy(context, 50, "2014-12-31", "2015-01-01", "New year's party");
-        Occupancy occupancy2 = createOccupancy(context, 25, "2015-03-17", "2015-03-17", "St Patricks day party");
-        Occupancy occupancy3 = createOccupancy(context, 10, "2015-02-14", "2015-02-17", "Valentines party");
+        Occupancy occupancy1 = createOccupancy( context, 50, "2014-12-31", "2015-01-01", "New year's party" );
+        Occupancy occupancy2 = createOccupancy( context, 25, "2015-03-17", "2015-03-17", "St Patricks day party" );
+        Occupancy occupancy3 = createOccupancy( context, 10, "2015-02-14", "2015-02-17", "Valentines party" );
 
-        List<Occupancy> occupancies = new ArrayList< Occupancy >();
-        occupancies.add(occupancy1);
-        occupancies.add(occupancy2);
-        occupancies.add(occupancy3);
+        List< Occupancy > occupancies = new ArrayList< Occupancy >( );
+        occupancies.add( occupancy1 );
+        occupancies.add( occupancy2 );
+        occupancies.add( occupancy3 );
 
         return occupancies;
     }
