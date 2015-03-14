@@ -18,6 +18,7 @@ public class Occupancy
     // Attributes
     // ----------------------------
 
+    private Integer occupancyId;
     private Integer totalCapacity;
     private Date startDate;
     private Date endDate;
@@ -26,6 +27,10 @@ public class Occupancy
     // ----------------------------
     // Getters & Setters
     // ----------------------------
+
+    public Integer getOccupancyId() { return occupancyId; }
+
+    public void setOccupancyId(Integer occupancyId) { this.occupancyId = occupancyId; }
 
     public Integer getTotalCapacity( )
     {
