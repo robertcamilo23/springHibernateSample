@@ -30,13 +30,15 @@
         <property name="current_session_context_class">thread</property>
 
         <!-- Mapping resource configuration files -->
-        <mapping resource="Building.hbm.xml"/>
-        <mapping resource="Floor.hbm.xml"/>
-        <mapping resource="Room.hbm.xml"/>
         <mapping resource="Address.hbm.xml"/>
+        <mapping resource="Building.hbm.xml"/>
         <mapping resource="Detail.hbm.xml"/>
-        <mapping resource="Occupancy.hbm.xml"/>
+        <mapping resource="Floor.hbm.xml"/>
         <mapping resource="Inspection.hbm.xml"/>
+        <mapping resource="MaintenanceRequest.hbm.xml"/>
+        <mapping resource="MaintenanceTicket.hbm.xml"/>
+        <mapping resource="Occupancy.hbm.xml"/>
+        <mapping resource="Room.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>

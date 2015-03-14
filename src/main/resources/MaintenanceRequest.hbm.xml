@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Comp473p2.domain.maintenance">
+    <class name="MaintenanceRequest" table="MaintenanceRequests">
+        <id name="requestId" column="requestId">
+            <generator class="native"/>
+        </id>
+        <property name="description" type="java.lang.String" column="description"/>
+        <property name="status" type="java.lang.Enum" column="status"/>
+    </class>
+</hibernate-mapping>
