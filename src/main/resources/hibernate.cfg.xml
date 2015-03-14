@@ -34,6 +34,7 @@
         <mapping resource="Floor.hbm.xml"/>
         <mapping resource="Room.hbm.xml"/>
         <mapping resource="Address.hbm.xml"/>
+        <mapping resource="Occupancy.hbm.xml"/>
 
     </session-factory>
 </hibernate-configuration>
