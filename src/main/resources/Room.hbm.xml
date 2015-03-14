@@ -12,7 +12,7 @@
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="number" type="java.lang.Integer" column="number"/>
         <list name="occupancies" table="Occupancies">
-            <key column="Rooms_id" foreign-key="Comp473p2.domain.facility.Floor" not-null="true"></key>
+            <key column="Rooms_id" foreign-key="Comp473p2.domain.facility.Room" not-null="true"></key>
             <list-index column="idx"/>
             <one-to-many class="Comp473p2.domain.Occupancy"/>
         </list>
