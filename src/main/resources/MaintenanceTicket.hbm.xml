@@ -10,6 +10,11 @@
         </id>
         <property name="cost" type="java.lang.Double" column="hourlyCost"/>
         <property name="hoursBilled" type="java.lang.Double" column="hoursBilled"/>
-        <property name="status" type="java.lang.Enum" column="status"/>
+        <property name="status" column="status">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">Comp473p2.domain.enums.MaintenanceStatus</param>
+                <param name="useNamed">true</param>
+            </type>
+        </property>
     </class>
 </hibernate-mapping>
