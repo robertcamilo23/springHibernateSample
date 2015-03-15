@@ -41,10 +41,14 @@
                 <!--<ref bean="detail"/>-->
             </set>
         </property>
-        <property name="maintenanceLog">
+        <property name="maintenanceTickets">
+            <list>
+                <!--<ref bean="maintenanceTicket"/>-->
+            </list>
+        </property>
+        <property name="maintenanceRequests">
             <list>
                 <!--<ref bean="maintenanceRequest"/>-->
-                <!--<ref bean="maintenanceTicket"/>-->
             </list>
         </property>
     </bean>

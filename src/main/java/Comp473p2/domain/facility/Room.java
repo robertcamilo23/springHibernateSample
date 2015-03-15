@@ -3,6 +3,8 @@ package Comp473p2.domain.facility;
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.maintenance.Maintenance;
+import Comp473p2.domain.maintenance.MaintenanceRequest;
+import Comp473p2.domain.maintenance.MaintenanceTicket;
 
 import java.util.List;
 import java.util.Set;
@@ -27,6 +29,8 @@ public class Room extends Facility
     private Set< Detail > details;
     private List< Inspection > inspections;
     private List< Occupancy > occupancies;
+    private List<MaintenanceRequest> maintenanceRequests;
+    private List<MaintenanceTicket> maintenanceTickets;
     private List< Maintenance > maintenanceLog;
 
     // ----------------------------
@@ -63,6 +67,15 @@ public class Room extends Facility
         this.occupancies = occupancies;
     }
 
+    public List<MaintenanceRequest> getMaintenanceRequests() { return maintenanceRequests; }
+
+    public void setMaintenanceRequests(List<MaintenanceRequest> maintenanceRequests) { this.maintenanceRequests = maintenanceRequests; }
+
+    public List<MaintenanceTicket> getMaintenanceTickets() { return maintenanceTickets; }
+
+    public void setMaintenanceTickets(List<MaintenanceTicket> maintenanceTickets) { this.maintenanceTickets = maintenanceTickets; }
+
+    /*
     public List< Maintenance > getMaintenanceLog( )
     {
         return maintenanceLog;
@@ -72,7 +85,7 @@ public class Room extends Facility
     {
         this.maintenanceLog = maintenanceLog;
     }
-
+    */
     public Set< Detail > getDetails( )
     {
         return details;
