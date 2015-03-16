@@ -1,5 +1,7 @@
 package Comp473p2.domain.maintenance;
 
+import java.util.List;
+
 /**
  * MaintenanceRequest.java
  *
@@ -18,8 +20,8 @@ public class MaintenanceRequest extends Maintenance
 
     private Integer requestId;
     private String description;
-    private MaintenanceTicket fulfilledBy;
-
+    // private MaintenanceTicket fulfilledBy;
+    private List<MaintenanceTicket> maintenanceTickets;
     // ----------------------------
     // Constructor
     // ----------------------------
@@ -32,7 +34,7 @@ public class MaintenanceRequest extends Maintenance
     public MaintenanceRequest( int facilityId )
     {
         super( facilityId );
-        fulfilledBy = null;
+        //fulfilledBy = null;
     }
 
     // ----------------------------
@@ -58,4 +60,8 @@ public class MaintenanceRequest extends Maintenance
     {
         this.description = description;
     }
+
+    public List<MaintenanceTicket> getMaintenanceTickets() { return maintenanceTickets; }
+
+    public void setMaintenanceTickets(List<MaintenanceTicket> maintenanceTickets) { this.maintenanceTickets = maintenanceTickets; }
 }

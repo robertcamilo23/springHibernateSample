@@ -30,8 +30,7 @@ public class Room extends Facility
     private List< Inspection > inspections;
     private List< Occupancy > occupancies;
     private List<MaintenanceRequest> maintenanceRequests;
-    private List<MaintenanceTicket> maintenanceTickets;
-    private List< Maintenance > maintenanceLog;
+    // private List< Maintenance > maintenanceLog;
 
     // ----------------------------
     // Getters & Setters
@@ -71,9 +70,6 @@ public class Room extends Facility
 
     public void setMaintenanceRequests(List<MaintenanceRequest> maintenanceRequests) { this.maintenanceRequests = maintenanceRequests; }
 
-    public List<MaintenanceTicket> getMaintenanceTickets() { return maintenanceTickets; }
-
-    public void setMaintenanceTickets(List<MaintenanceTicket> maintenanceTickets) { this.maintenanceTickets = maintenanceTickets; }
 
     /*
     public List< Maintenance > getMaintenanceLog( )

@@ -9,6 +9,8 @@
 
     <context:component-scan base-package="Comp473p2"/>
 
+    <bean id="address" class="Comp473p2.domain.facility.Address" scope="prototype"/>
+
     <bean id="building" class="Comp473p2.domain.facility.Building">
         <property name="floors">
             <list>
@@ -17,6 +19,10 @@
         </property>
     </bean>
 
+    <bean id="detail" class="Comp473p2.domain.facility.Detail" scope="prototype"/>
+
+    <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
+
     <bean id="floor" class="Comp473p2.domain.facility.Floor" scope="prototype">
         <property name="rooms">
             <list>
@@ -24,6 +30,17 @@
             </list>
         </property>
     </bean>
+    <bean id="inspection" class="Comp473p2.domain.Inspection" scope="prototype"/>
+    <bean id="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" scope="prototype"/>
+    <bean id="maintenanceRequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype">
+        <property name="maintenanceTickets">
+            <list>
+                <!--<ref bean="maintenanceTicket"/>-->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="occupancy" class="Comp473p2.domain.Occupancy" scope="prototype"/>
 
     <bean id="room" class="Comp473p2.domain.facility.Room" scope="prototype">
         <property name="occupancies">
@@ -41,25 +58,10 @@
                 <!--<ref bean="detail"/>-->
             </set>
         </property>
-        <property name="maintenanceTickets">
-            <list>
-                <!--<ref bean="maintenanceTicket"/>-->
-            </list>
-        </property>
         <property name="maintenanceRequests">
             <list>
                 <!--<ref bean="maintenanceRequest"/>-->
             </list>
         </property>
     </bean>
-
-    <bean id="occupancy" class="Comp473p2.domain.Occupancy" scope="prototype"/>
-    <bean id="inspection" class="Comp473p2.domain.Inspection" scope="prototype"/>
-    <bean id="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" scope="prototype"/>
-    <bean id="maintenanceRequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype"/>
-    <bean id="address" class="Comp473p2.domain.facility.Address" scope="prototype"/>
-    <bean id="detail" class="Comp473p2.domain.facility.Detail" scope="prototype"/>
-
-    <bean id="facilityService" class="Comp473p2.service.FacilityService" scope="prototype"/>
-
 </beans>

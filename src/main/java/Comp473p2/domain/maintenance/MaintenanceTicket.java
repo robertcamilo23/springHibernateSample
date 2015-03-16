@@ -20,7 +20,7 @@ public class MaintenanceTicket extends Maintenance
     // ----------------------------
 
     private Integer ticketId;
-    private MaintenanceRequest fulfills;
+    //private MaintenanceRequest fulfills;
     private Double cost;
     private Double hoursBilled;
     private NumberFormat currencyFormat = NumberFormat.getCurrencyInstance( Locale.ENGLISH );
@@ -38,7 +38,7 @@ public class MaintenanceTicket extends Maintenance
     {
         super( facilityId );
         ticketId = maintenanceRequest.getRequestId( );
-        fulfills = maintenanceRequest;
+        //fulfills = maintenanceRequest;
     }
 
     // ----------------------------
@@ -84,7 +84,7 @@ public class MaintenanceTicket extends Maintenance
     {
         this.hoursBilled = hoursBilled;
     }
-
+/*
     public MaintenanceRequest getMaintenanceRequest( )
     {
         return fulfills;
@@ -94,4 +94,5 @@ public class MaintenanceTicket extends Maintenance
     {
         this.fulfills = fulfills;
     }
+    */
 }
