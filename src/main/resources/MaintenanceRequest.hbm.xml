@@ -15,10 +15,6 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
-        <list name="maintenanceTickets" table="MaintenanceTickets" cascade="all">
-            <key column="Rooms_id" foreign-key="Comp473p2.domain.facility.Room" not-null="true"></key>
-            <list-index column="idx"/>
-            <one-to-many class="Comp473p2.domain.maintenance.MaintenanceTicket"/>
-        </list>
+        <one-to-one name="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" cascade="save-update"/>
     </class>
 </hibernate-mapping>
