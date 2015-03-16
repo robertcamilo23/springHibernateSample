@@ -11,7 +11,7 @@
         <property name="description" type="java.lang.String" column="description"/>
         <property name="capacity" type="java.lang.Integer" column="capacity"/>
         <property name="level" type="java.lang.Integer" column="level"/>
-        <list name="rooms" cascade="all">
+        <list name="rooms" cascade="all-delete-orphan">
             <key column="Floors_id" foreign-key="Comp473p2.domain.facility.Floor" not-null="true"></key>
             <list-index column="idx"/>
             <one-to-many class="Comp473p2.domain.facility.Room"/>

@@ -21,11 +21,11 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     private BuildingDAO buildingDAO = new BuildingDAO( );
     private FloorDAO floorDAO = new FloorDAO( );
     private RoomDAO roomDAO = new RoomDAO( );
-    private InspectionDAO inspectionDAO = new InspectionDAO();
+    private InspectionDAO inspectionDAO = new InspectionDAO( );
     private DetailDAO detailDAO = new DetailDAO( );
-    private OccupancyDAO occupancyDAO = new OccupancyDAO();
-    private MaintenanceRequestDAO requestDAO = new MaintenanceRequestDAO();
-    private MaintenanceTicketDAO ticketDAO = new MaintenanceTicketDAO();
+    private OccupancyDAO occupancyDAO = new OccupancyDAO( );
+    private MaintenanceRequestDAO requestDAO = new MaintenanceRequestDAO( );
+    private MaintenanceTicketDAO ticketDAO = new MaintenanceTicketDAO( );
 
     /** Buildings */
     public void createBuilding( Building building )
@@ -72,29 +72,29 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
 
     public Floor readFloor( Integer floorId )
     {
-        floorDAO.openCurrentSession();
+        floorDAO.openCurrentSession( );
         Floor floor = floorDAO.findById( floorId );
-        floorDAO.closeCurrentSession();
+        floorDAO.closeCurrentSession( );
         return floor;
     }
 
     public void updateFloor( Floor floor )
     {
-        floorDAO.openCurrentSessionWithTransaction();
+        floorDAO.openCurrentSessionWithTransaction( );
         floorDAO.update( floor );
-        floorDAO.closeCurrentSessionWithTransaction();
+        floorDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteFloor( Floor floor )
     {
         floorDAO.openCurrentSessionWithTransaction( );
-        floorDAO.delete(floor);
+        floorDAO.delete( floor );
         floorDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteFloor( Integer floorId )
     {
-        deleteFloor(readFloor(floorId));
+        deleteFloor( readFloor( floorId ) );
     }
 
     /** Rooms */
@@ -102,76 +102,76 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     {
         roomDAO.openCurrentSessionWithTransaction( );
         roomDAO.persist( room );
-        roomDAO.closeCurrentSessionWithTransaction();
+        roomDAO.closeCurrentSessionWithTransaction( );
     }
 
     public Room readRoom( Integer roomId )
     {
-        roomDAO.openCurrentSession();
+        roomDAO.openCurrentSession( );
         Room room = roomDAO.findById( roomId );
-        roomDAO.closeCurrentSession();
+        roomDAO.closeCurrentSession( );
         return room;
     }
 
     public void updateRoom( Room room )
     {
-        roomDAO.openCurrentSessionWithTransaction();
+        roomDAO.openCurrentSessionWithTransaction( );
         roomDAO.update( room );
-        roomDAO.closeCurrentSessionWithTransaction();
+        roomDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteRoom( Room room )
     {
         roomDAO.openCurrentSessionWithTransaction( );
-        roomDAO.delete(room);
+        roomDAO.delete( room );
         roomDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteRoom( Integer roomId )
     {
-        deleteRoom(readRoom(roomId));
+        deleteRoom( readRoom( roomId ) );
     }
 
     /** MaintenanceRequests table */
     public void createMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
-        requestDAO.openCurrentSessionWithTransaction();
-        requestDAO.persist(maintenanceRequest);
-        requestDAO.closeCurrentSessionWithTransaction();
+        requestDAO.openCurrentSessionWithTransaction( );
+        requestDAO.persist( maintenanceRequest );
+        requestDAO.closeCurrentSessionWithTransaction( );
     }
 
     public MaintenanceRequest readMaintenanceRequest( Integer requestId )
     {
-        requestDAO.openCurrentSession();
-        MaintenanceRequest request = requestDAO.findById(requestId);
-        requestDAO.closeCurrentSession();
+        requestDAO.openCurrentSession( );
+        MaintenanceRequest request = requestDAO.findById( requestId );
+        requestDAO.closeCurrentSession( );
         return request;
     }
 
     public void updateMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
-        requestDAO.openCurrentSessionWithTransaction();
+        requestDAO.openCurrentSessionWithTransaction( );
         requestDAO.update( maintenanceRequest );
-        requestDAO.closeCurrentSessionWithTransaction();
+        requestDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
-        requestDAO.openCurrentSessionWithTransaction();
-        requestDAO.delete(maintenanceRequest);
-        requestDAO.closeCurrentSessionWithTransaction();
+        requestDAO.openCurrentSessionWithTransaction( );
+        requestDAO.delete( maintenanceRequest );
+        requestDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteMaintenanceRequest( Integer requestId )
     {
-        deleteMaintenanceRequest(readMaintenanceRequest(requestId));
+        deleteMaintenanceRequest( readMaintenanceRequest( requestId ) );
     }
 
-    public void addMaintenanceRequest (Integer roomId, MaintenanceRequest request)
+    public void addMaintenanceRequest( Integer roomId, MaintenanceRequest request )
     {
         roomDAO.openCurrentSession( );
         Room room = roomDAO.findById( roomId );
-        room.addMaintenanceRequest(request);
+        room.addMaintenanceRequest( request );
         roomDAO.closeCurrentSession( );
         updateRoom( room );
     }
@@ -179,39 +179,40 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     /** MaintenanceTickets table */
     public void createMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
-        ticketDAO.openCurrentSessionWithTransaction();
-        ticketDAO.persist(maintenanceTicket);
-        ticketDAO.closeCurrentSessionWithTransaction();
+        ticketDAO.openCurrentSessionWithTransaction( );
+        ticketDAO.persist( maintenanceTicket );
+        ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
     public MaintenanceTicket readMaintenanceTicket( Integer ticketId )
     {
-        ticketDAO.openCurrentSession();
+        ticketDAO.openCurrentSession( );
         MaintenanceTicket ticket = ticketDAO.findById( ticketId );
-        ticketDAO.closeCurrentSession();
+        ticketDAO.closeCurrentSession( );
         return ticket;
     }
 
     public void updateMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
-        ticketDAO.openCurrentSessionWithTransaction();
+        ticketDAO.openCurrentSessionWithTransaction( );
         ticketDAO.update( maintenanceTicket );
-        ticketDAO.closeCurrentSessionWithTransaction();
+        ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
-        ticketDAO.openCurrentSessionWithTransaction();
+        ticketDAO.openCurrentSessionWithTransaction( );
         ticketDAO.delete( maintenanceTicket );
-        ticketDAO.closeCurrentSessionWithTransaction();
+        ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteMaintenanceTicket( Integer ticketId )
     {
-        deleteMaintenanceTicket(readMaintenanceTicket(ticketId));
+        deleteMaintenanceTicket( readMaintenanceTicket( ticketId ) );
     }
 
-    public void addMaintenanceTicket ( Integer requestId, MaintenanceTicket ticket ) {
+    public void addMaintenanceTicket( Integer requestId, MaintenanceTicket ticket )
+    {
         requestDAO.openCurrentSession( );
         MaintenanceRequest request = requestDAO.findById( requestId );
         request.setMaintenanceTicket( ticket );
@@ -229,64 +230,83 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
 
     public Occupancy readOccupancy( Integer occupancyId )
     {
-        occupancyDAO.openCurrentSession();
+        occupancyDAO.openCurrentSession( );
         Occupancy occupancy = occupancyDAO.findById( occupancyId );
-        occupancyDAO.closeCurrentSession();
+        occupancyDAO.closeCurrentSession( );
         return occupancy;
     }
 
     public void updateOccupancy( Occupancy occupancy )
     {
         occupancyDAO.openCurrentSessionWithTransaction( );
-        occupancyDAO.update (occupancy );
+        occupancyDAO.update( occupancy );
         occupancyDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteOccupancy( Occupancy occupancy )
     {
         occupancyDAO.openCurrentSessionWithTransaction( );
-        occupancyDAO.delete(occupancy);
+        occupancyDAO.delete( occupancy );
         occupancyDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteOccupancy( Integer occupancyId )
     {
-        deleteOccupancy(readOccupancy(occupancyId));
+        deleteOccupancy( readOccupancy( occupancyId ) );
+    }
+
+
+    public void addRoomOccupancy( Integer roomId, Occupancy occupancy )
+    {
+        roomDAO.openCurrentSession( );
+        Room room = roomDAO.findById( roomId );
+        room.addOccupancy( occupancy );
+        roomDAO.closeCurrentSession( );
+        updateRoom( room );
+    }
+
+    public void removeRoomOccupancy( Integer roomId, Integer occupancyId )
+    {
+        roomDAO.openCurrentSession( );
+        Room room = roomDAO.findById( roomId );
+        room.removeOccupancy( readOccupancy( occupancyId ) );
+        roomDAO.closeCurrentSession( );
+        updateRoom( room );
     }
 
     /** Inspections table */
     public void createInspection( Inspection inspection )
     {
-        inspectionDAO.openCurrentSessionWithTransaction();
-        inspectionDAO.update(inspection);
-        inspectionDAO.closeCurrentSessionWithTransaction();
+        inspectionDAO.openCurrentSessionWithTransaction( );
+        inspectionDAO.update( inspection );
+        inspectionDAO.closeCurrentSessionWithTransaction( );
     }
 
     public Inspection readInspection( Integer inspectionId )
     {
-        inspectionDAO.openCurrentSession();
-        Inspection inspection = inspectionDAO.findById(inspectionId);
-        inspectionDAO.closeCurrentSession();
+        inspectionDAO.openCurrentSession( );
+        Inspection inspection = inspectionDAO.findById( inspectionId );
+        inspectionDAO.closeCurrentSession( );
         return inspection;
     }
 
     public void updateInspection( Inspection inspection )
     {
-        inspectionDAO.openCurrentSessionWithTransaction();
-        inspectionDAO.update(inspection);
-        inspectionDAO.closeCurrentSessionWithTransaction();
+        inspectionDAO.openCurrentSessionWithTransaction( );
+        inspectionDAO.update( inspection );
+        inspectionDAO.closeCurrentSessionWithTransaction( );
     }
 
-    public void deleteInspection(Inspection inspection )
+    public void deleteInspection( Inspection inspection )
     {
-        inspectionDAO.openCurrentSessionWithTransaction();
-        inspectionDAO.update(inspection);
-        inspectionDAO.closeCurrentSessionWithTransaction();
+        inspectionDAO.openCurrentSessionWithTransaction( );
+        inspectionDAO.update( inspection );
+        inspectionDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteInspection( Integer inspectionId )
     {
-        deleteInspection(readInspection(inspectionId));
+        deleteInspection( readInspection( inspectionId ) );
     }
 
     /** Details table */

@@ -15,6 +15,7 @@
                 <param name="useNamed">true</param>
             </type>
         </property>
-        <one-to-one name="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" cascade="save-update"/>
+        <one-to-one name="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket"
+                    cascade="save-update"/>
     </class>
 </hibernate-mapping>

@@ -2,9 +2,7 @@ package Comp473p2.domain.facility;
 
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
-import Comp473p2.domain.maintenance.Maintenance;
 import Comp473p2.domain.maintenance.MaintenanceRequest;
-import Comp473p2.domain.maintenance.MaintenanceTicket;
 
 import java.util.List;
 import java.util.Set;
@@ -29,8 +27,7 @@ public class Room extends Facility
     private Set< Detail > details;
     private List< Inspection > inspections;
     private List< Occupancy > occupancies;
-    private List<MaintenanceRequest> maintenanceRequests;
-    // private List< Maintenance > maintenanceLog;
+    private List< MaintenanceRequest > maintenanceRequests;
 
     // ----------------------------
     // Getters & Setters
@@ -66,24 +63,21 @@ public class Room extends Facility
         this.occupancies = occupancies;
     }
 
-    public List<MaintenanceRequest> getMaintenanceRequests() { return maintenanceRequests; }
-
-    public void setMaintenanceRequests(List<MaintenanceRequest> maintenanceRequests) { this.maintenanceRequests = maintenanceRequests; }
-
-    public void addMaintenanceRequest( MaintenanceRequest request ) { this.maintenanceRequests.add(request); }
-
-
-    /*
-    public List< Maintenance > getMaintenanceLog( )
+    public List< MaintenanceRequest > getMaintenanceRequests( )
     {
-        return maintenanceLog;
+        return maintenanceRequests;
     }
 
-    public void setMaintenanceLog( List< Maintenance > maintenanceLog )
+    public void setMaintenanceRequests( List< MaintenanceRequest > maintenanceRequests )
     {
-        this.maintenanceLog = maintenanceLog;
+        this.maintenanceRequests = maintenanceRequests;
     }
-    */
+
+    public void addMaintenanceRequest( MaintenanceRequest request )
+    {
+        this.maintenanceRequests.add( request );
+    }
+
     public Set< Detail > getDetails( )
     {
         return details;
@@ -97,5 +91,15 @@ public class Room extends Facility
     public void addDetail( Detail detail )
     {
         this.details.add( detail );
+    }
+
+    public void addOccupancy( Occupancy occupancy )
+    {
+        this.occupancies.add( occupancy );
+    }
+
+    public void removeOccupancy( Occupancy occupancy )
+    {
+        this.occupancies.remove( occupancy );
     }
 }

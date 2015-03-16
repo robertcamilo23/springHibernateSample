@@ -77,4 +77,14 @@ public class Occupancy
     {
         this.usage = usage;
     }
+
+    @Override
+    public boolean equals( Object obj )
+    {
+        if ( !( obj instanceof Occupancy ) )
+        {
+            return false;
+        }
+        return this.getOccupancyId( ).equals( ( ( Occupancy ) obj ).getOccupancyId( ) );
+    }
 }

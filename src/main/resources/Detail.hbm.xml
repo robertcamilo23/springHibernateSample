@@ -9,7 +9,7 @@
             <generator class="native"/>
         </id>
         <property name="detail" type="java.lang.String" column="detail"/>
-        <set name="rooms" table="RoomsXDetails" inverse="false" lazy="true" fetch="select">
+        <set name="rooms" table="RoomsXDetails" inverse="false" lazy="true" fetch="select" cascade="all-delete-orphan">
             <key>
                 <column name="Details_id"/>
             </key>

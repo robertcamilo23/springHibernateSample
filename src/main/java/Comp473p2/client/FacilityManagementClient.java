@@ -1,7 +1,7 @@
 package Comp473p2.client;
 
-import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.Inspection;
+import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.enums.InspectionType;
 import Comp473p2.domain.facility.*;
 import Comp473p2.domain.maintenance.MaintenanceRequest;
@@ -12,7 +12,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by robert on 3/5/15.
@@ -22,17 +25,18 @@ public class FacilityManagementClient
     public static void main( String[] args )
     {
         ApplicationContext context = new ClassPathXmlApplicationContext( "META-INF/app-context.xml" );
-//        addRoomDetail( context, 5, 1 );
         addBuilding( context );
     }
 
-    private static void addMaintenanceRequest( ApplicationContext context, Integer requestId, Integer roomId) {
+    private static void addMaintenanceRequest( ApplicationContext context, Integer requestId, Integer roomId )
+    {
         FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
-        MaintenanceRequest request = facilityService.readMaintenanceRequest(requestId);
+        MaintenanceRequest request = facilityService.readMaintenanceRequest( requestId );
         facilityService.addMaintenanceRequest( roomId, request );
     }
 
-    private static void addMaintenanceTicket( ApplicationContext context, MaintenanceTicket ticket, Integer requestId ) {
+    private static void addMaintenanceTicket( ApplicationContext context, MaintenanceTicket ticket, Integer requestId )
+    {
         FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         facilityService.addMaintenanceTicket( requestId, ticket );
     }
@@ -42,6 +46,19 @@ public class FacilityManagementClient
         FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         Detail detail = facilityService.readDetail( detailId );
         facilityService.addRoomDetail( roomId, detail );
+    }
+
+    private static void addRoomOccupancy( ApplicationContext context, Integer roomId )
+    {
+        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        Occupancy occupancy = createOccupancy( context, 50, "2015-03-17 19:00:00", "2015-03-17 21:30:00", "Advanced OO class" );
+        facilityService.addRoomOccupancy( roomId, occupancy );
+    }
+
+    private static void removeRoomOccupancy( ApplicationContext context, Integer roomId, Integer occupancyId )
+    {
+        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        facilityService.removeRoomOccupancy( roomId, occupancyId );
     }
 
     private static void addBuilding( ApplicationContext context )
@@ -62,8 +79,8 @@ public class FacilityManagementClient
         Room[] rooms1 = { createRoom( context, 101, 25, "Room 101 description" ), createRoom( context, 102, 26, "Room 102 description" ), createRoom( context, 103, 26, "Room 103 description" ) };
         Room[] rooms2 = { createRoom( context, 201, 30, "Room 201 description" ), createRoom( context, 202, 15, "Room 202 description" ), createRoom( context, 203, 26, "Room 203 description" ) };
         Room[] rooms3 = { createRoom( context, 301, 50, "Room 301 description" ), createRoom( context, 302, 16, "Room 302 description" ), createRoom( context, 304, 26, "Room 303 description" ) };
-        rooms3[0].setOccupancies(getOccupanciesSample(context));
-        rooms3[0].setInspections(getInspections(context));
+        rooms3[ 0 ].setOccupancies( getOccupanciesSample( context ) );
+        rooms3[ 0 ].setInspections( getInspections( context ) );
         Room[] rooms4 = { createRoom( context, 401, 22, "Room 401 description" ), createRoom( context, 402, 61, "Room 402 description" ), createRoom( context, 404, 26, "Room 403 description" ) };
         Room[] rooms5 = { createRoom( context, 501, 18, "Room 501 description" ), createRoom( context, 502, 10, "Room 502 description" ), createRoom( context, 504, 26, "Room 503 description" ) };
 
@@ -81,33 +98,36 @@ public class FacilityManagementClient
         floors.add( ( Floor ) floor4 );
         floors.add( ( Floor ) floor5 );
 
-        //return createBuilding( context, "Building description", "Corboy        Law    center   ", "25   E.    Pearson  St. ", "", "Chicago",
-        //                       "IL", 60611, "7734456945", floors );
-        return createBuilding( context, "Building description", "Lewis Towers  ", "55   E.    Pearson  St. ", "", "Chicago",
-                               "IL", 60611, "7734456945", floors );
+        return createBuilding( context, "Building description", "Lewis Towers  ", "55   E.    Pearson  St. ", "",
+                               "Chicago", "IL", 60611, "7734456945", floors );
     }
 
-    private static List<Inspection> getInspections(ApplicationContext context) {
-        List<Inspection> inspections = new ArrayList<Inspection>();
-        inspections.add(createInspection(context, InspectionType.ELECTRICAL, "2015-03-15"));
-        inspections.add(createInspection(context, InspectionType.ELEVATOR, "2015-03-05"));
-        inspections.add(createInspection(context, InspectionType.FIRE, "2015-02-15"));
+    private static List< Inspection > getInspections( ApplicationContext context )
+    {
+        List< Inspection > inspections = new ArrayList< Inspection >( );
+        inspections.add( createInspection( context, InspectionType.ELECTRICAL, "2015-03-15 09:00:00" ) );
+        inspections.add( createInspection( context, InspectionType.ELEVATOR, "2015-03-05 09:00:00" ) );
+        inspections.add( createInspection( context, InspectionType.FIRE, "2015-02-15 09:00:00" ) );
         return inspections;
     }
 
-    public static Inspection createInspection( ApplicationContext context, InspectionType type, String dateReceived ) {
+    public static Inspection createInspection( ApplicationContext context, InspectionType type, String dateReceived )
+    {
         Inspection inspection = ( Inspection ) context.getBean( "inspection" );
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+        Date date = new Date( );
 
-        try {
-            date = format.parse(dateReceived);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        try
+        {
+            date = format.parse( dateReceived );
+        }
+        catch ( ParseException e )
+        {
+            e.printStackTrace( );
         }
 
-        inspection.setDate(date);
-        inspection.setType(type);
+        inspection.setDate( date );
+        inspection.setType( type );
         return inspection;
     }
 
@@ -130,8 +150,8 @@ public class FacilityManagementClient
         }
         floor.setDescription( description );
         floor.setCapacity( capacity );
-        floor.setLevel(level);
-        floor.setRooms(rooms);
+        floor.setLevel( level );
+        floor.setRooms( rooms );
         return floor;
     }
 
@@ -154,9 +174,9 @@ public class FacilityManagementClient
             capacity += floor.getCapacity( );
         }
         building.setCapacity( capacity );
-        building.setFloors(floors);
+        building.setFloors( floors );
         building.setName( upperCaseTrimmedWhitesSpaces( name ) );
-        building.setAddress(address );
+        building.setAddress( address );
         building.setDescription( description );
         return building;
     }
@@ -167,11 +187,17 @@ public class FacilityManagementClient
         Occupancy occupancy = ( Occupancy ) context.getBean( "occupancy" );
         occupancy.setTotalCapacity( totalCapacity );
 
-        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd" );
-        Date date = new Date();
-        try { date = format.parse(startDate); } catch (ParseException e) {
-            e.printStackTrace(); }
-        occupancy.setStartDate(date);
+        SimpleDateFormat format = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+        Date date = new Date( );
+        try
+        {
+            date = format.parse( startDate );
+        }
+        catch ( ParseException e )
+        {
+            e.printStackTrace( );
+        }
+        occupancy.setStartDate( date );
 
         try
         {
@@ -193,15 +219,15 @@ public class FacilityManagementClient
         }
         occupancy.setEndDate( date );
 
-        occupancy.setUsage(usage);
+        occupancy.setUsage( usage );
         return occupancy;
     }
 
     private static List< Occupancy > getOccupanciesSample( ApplicationContext context )
     {
-        Occupancy occupancy1 = createOccupancy( context, 50, "2014-12-31", "2015-01-01", "New year's party" );
-        Occupancy occupancy2 = createOccupancy( context, 25, "2015-03-17", "2015-03-17", "St Patricks day party" );
-        Occupancy occupancy3 = createOccupancy( context, 10, "2015-02-14", "2015-02-17", "Valentines party" );
+        Occupancy occupancy1 = createOccupancy( context, 50, "2014-12-31 19:00:00", "2015-01-01 04:00:00", "New year's party" );
+        Occupancy occupancy2 = createOccupancy( context, 25, "2015-03-17 09:30:00", "2015-03-17 23:59:00", "St Patrick's day party" );
+        Occupancy occupancy3 = createOccupancy( context, 10, "2015-02-14 13:00:00", "2015-02-17 20:45:00", "Valentines party" );
 
         List< Occupancy > occupancies = new ArrayList< Occupancy >( );
         occupancies.add( occupancy1 );
