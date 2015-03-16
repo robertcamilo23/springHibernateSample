@@ -21,7 +21,7 @@ public class MaintenanceRequest extends Maintenance
     private Integer requestId;
     private String description;
     // private MaintenanceTicket fulfilledBy;
-    private List<MaintenanceTicket> maintenanceTickets;
+    private MaintenanceTicket maintenanceTicket;
     // ----------------------------
     // Constructor
     // ----------------------------
@@ -61,7 +61,7 @@ public class MaintenanceRequest extends Maintenance
         this.description = description;
     }
 
-    public List<MaintenanceTicket> getMaintenanceTickets() { return maintenanceTickets; }
+    public MaintenanceTicket getMaintenanceTicket() { return maintenanceTicket; }
 
-    public void setMaintenanceTickets(List<MaintenanceTicket> maintenanceTickets) { this.maintenanceTickets = maintenanceTickets; }
+    public void setMaintenanceTicket( MaintenanceTicket maintenanceTicket ) { this.maintenanceTicket = maintenanceTicket; }
 }

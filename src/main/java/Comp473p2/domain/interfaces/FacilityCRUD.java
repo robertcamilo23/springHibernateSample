@@ -50,7 +50,7 @@ public interface FacilityCRUD
     /** Maintenance Request table */
     public void createMaintenanceRequest( MaintenanceRequest maintenanceRequest );
 
-    public void readMaintenanceRequest( Integer requestId );
+    public MaintenanceRequest readMaintenanceRequest( Integer requestId );
 
     public void updateMaintenanceRequest( MaintenanceRequest maintenanceRequest );
 
@@ -61,7 +61,7 @@ public interface FacilityCRUD
     /** Maintenance Ticket table */
     public void createMaintenanceTicket( MaintenanceTicket maintenanceTicket );
 
-    public void readMaintenanceTicket( Integer requestId );
+    public MaintenanceTicket readMaintenanceTicket( Integer requestId );
 
     public void updateMaintenanceTicket( MaintenanceTicket maintenanceTicket );
 

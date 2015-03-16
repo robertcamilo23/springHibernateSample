@@ -4,16 +4,15 @@ import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.enums.InspectionType;
 import Comp473p2.domain.facility.*;
+import Comp473p2.domain.maintenance.MaintenanceRequest;
+import Comp473p2.domain.maintenance.MaintenanceTicket;
 import Comp473p2.service.FacilityService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by robert on 3/5/15.
@@ -25,6 +24,17 @@ public class FacilityManagementClient
         ApplicationContext context = new ClassPathXmlApplicationContext( "META-INF/app-context.xml" );
 //        addRoomDetail( context, 5, 1 );
         addBuilding( context );
+    }
+
+    private static void addMaintenanceRequest( ApplicationContext context, Integer requestId, Integer roomId) {
+        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        MaintenanceRequest request = facilityService.readMaintenanceRequest(requestId);
+        facilityService.addMaintenanceRequest( roomId, request );
+    }
+
+    private static void addMaintenanceTicket( ApplicationContext context, MaintenanceTicket ticket, Integer requestId ) {
+        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        facilityService.addMaintenanceTicket( requestId, ticket );
     }
 
     private static void addRoomDetail( ApplicationContext context, Integer detailId, Integer roomId )

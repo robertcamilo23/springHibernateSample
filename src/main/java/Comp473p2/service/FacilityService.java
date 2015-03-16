@@ -24,6 +24,8 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     private InspectionDAO inspectionDAO = new InspectionDAO();
     private DetailDAO detailDAO = new DetailDAO( );
     private OccupancyDAO occupancyDAO = new OccupancyDAO();
+    private MaintenanceRequestDAO requestDAO = new MaintenanceRequestDAO();
+    private MaintenanceTicketDAO ticketDAO = new MaintenanceTicketDAO();
 
     /** Buildings */
     public void createBuilding( Building building )
@@ -133,53 +135,88 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     /** MaintenanceRequests table */
     public void createMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
-
+        requestDAO.openCurrentSessionWithTransaction();
+        requestDAO.persist(maintenanceRequest);
+        requestDAO.closeCurrentSessionWithTransaction();
     }
 
-    public void readMaintenanceRequest( Integer requestId )
+    public MaintenanceRequest readMaintenanceRequest( Integer requestId )
     {
-
+        requestDAO.openCurrentSession();
+        MaintenanceRequest request = requestDAO.findById(requestId);
+        requestDAO.closeCurrentSession();
+        return request;
     }
 
     public void updateMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
-
+        requestDAO.openCurrentSessionWithTransaction();
+        requestDAO.update( maintenanceRequest );
+        requestDAO.closeCurrentSessionWithTransaction();
     }
 
     public void deleteMaintenanceRequest( MaintenanceRequest maintenanceRequest )
     {
-
+        requestDAO.openCurrentSessionWithTransaction();
+        requestDAO.delete(maintenanceRequest);
+        requestDAO.closeCurrentSessionWithTransaction();
     }
 
     public void deleteMaintenanceRequest( Integer requestId )
     {
+        deleteMaintenanceRequest(readMaintenanceRequest(requestId));
+    }
 
+    public void addMaintenanceRequest (Integer roomId, MaintenanceRequest request)
+    {
+        roomDAO.openCurrentSession( );
+        Room room = roomDAO.findById( roomId );
+        room.addMaintenanceRequest(request);
+        roomDAO.closeCurrentSession( );
+        updateRoom( room );
     }
 
     /** MaintenanceTickets table */
     public void createMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
-
+        ticketDAO.openCurrentSessionWithTransaction();
+        ticketDAO.persist(maintenanceTicket);
+        ticketDAO.closeCurrentSessionWithTransaction();
     }
 
-    public void readMaintenanceTicket( Integer requestId )
+    public MaintenanceTicket readMaintenanceTicket( Integer ticketId )
     {
-
+        ticketDAO.openCurrentSession();
+        MaintenanceTicket ticket = ticketDAO.findById( ticketId );
+        ticketDAO.closeCurrentSession();
+        return ticket;
     }
 
     public void updateMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
-
+        ticketDAO.openCurrentSessionWithTransaction();
+        ticketDAO.update( maintenanceTicket );
+        ticketDAO.closeCurrentSessionWithTransaction();
     }
 
     public void deleteMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
-
+        ticketDAO.openCurrentSessionWithTransaction();
+        ticketDAO.delete( maintenanceTicket );
+        ticketDAO.closeCurrentSessionWithTransaction();
     }
 
-    public void deleteMaintenanceTicket( Integer requestId )
+    public void deleteMaintenanceTicket( Integer ticketId )
     {
+        deleteMaintenanceTicket(readMaintenanceTicket(ticketId));
+    }
 
+    public void addMaintenanceTicket ( Integer requestId, MaintenanceTicket ticket ) {
+        requestDAO.openCurrentSession( );
+        MaintenanceRequest request = requestDAO.findById( requestId );
+        request.setMaintenanceTicket( ticket );
+        roomDAO.closeCurrentSession( );
+        updateMaintenanceRequest( request );
     }
 
     /** Occupancies table */

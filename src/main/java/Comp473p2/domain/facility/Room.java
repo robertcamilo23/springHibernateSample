@@ -70,6 +70,8 @@ public class Room extends Facility
 
     public void setMaintenanceRequests(List<MaintenanceRequest> maintenanceRequests) { this.maintenanceRequests = maintenanceRequests; }
 
+    public void addMaintenanceRequest( MaintenanceRequest request ) { this.maintenanceRequests.add(request); }
+
 
     /*
     public List< Maintenance > getMaintenanceLog( )
