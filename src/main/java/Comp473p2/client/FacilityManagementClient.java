@@ -3,6 +3,7 @@ package Comp473p2.client;
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.enums.InspectionType;
+import Comp473p2.domain.enums.MaintenanceStatus;
 import Comp473p2.domain.facility.*;
 import Comp473p2.domain.maintenance.MaintenanceRequest;
 import Comp473p2.domain.maintenance.MaintenanceTicket;
@@ -37,7 +38,7 @@ public class FacilityManagementClient
         addBuilding( );
 //        addSampleDetails( );
 //        addRoomDetail( 1, 2 );
-//        removeRoomDetail( 1, 2 );
+        removeRoomDetail( 1, 2 );
     }
 
     private static void addMaintenanceRequest( Integer requestId, Integer roomId )
@@ -49,6 +50,10 @@ public class FacilityManagementClient
     private static void addMaintenanceTicket( MaintenanceTicket ticket, Integer requestId )
     {
         facilityService.addMaintenanceTicket(requestId, ticket);
+    }
+
+    private static void updateMaintenanceTicketStatus( MaintenanceStatus status, Integer ticketId ) {
+        facilityService.updateMaintenanceTicketStatus( status, ticketId );
     }
 
     private static void addDetail( Detail detail )
