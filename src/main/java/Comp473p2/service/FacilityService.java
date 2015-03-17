@@ -3,6 +3,7 @@ package Comp473p2.service;
 import Comp473p2.dao.*;
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
+import Comp473p2.domain.enums.MaintenanceStatus;
 import Comp473p2.domain.facility.Building;
 import Comp473p2.domain.facility.Detail;
 import Comp473p2.domain.facility.Floor;
@@ -202,14 +203,14 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     public void updateMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
         ticketDAO.openCurrentSessionWithTransaction( );
-        ticketDAO.update( maintenanceTicket );
+        ticketDAO.update(maintenanceTicket);
         ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
     public void deleteMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
         ticketDAO.openCurrentSessionWithTransaction( );
-        ticketDAO.delete( maintenanceTicket );
+        ticketDAO.delete(maintenanceTicket);
         ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
@@ -223,6 +224,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
         requestDAO.openCurrentSession( );
         MaintenanceRequest request = requestDAO.findById( requestId );
         request.setMaintenanceTicket( ticket );
+        ticket.setStatus(MaintenanceStatus.OPENED);
         roomDAO.closeCurrentSession( );
         updateMaintenanceRequest( request );
     }
@@ -267,9 +269,9 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     {
         roomDAO.openCurrentSession( );
         Room room = roomDAO.findById( roomId );
-        room.addOccupancy( occupancy );
-        roomDAO.closeCurrentSession( );
-        updateRoom( room );
+        room.addOccupancy(occupancy);
+        roomDAO.closeCurrentSession();
+        updateRoom(room);
     }
 
     public void removeRoomOccupancy( Integer roomId, Integer occupancyId )
@@ -278,7 +280,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
         Room room = roomDAO.findById( roomId );
         room.removeOccupancy( readOccupancy( occupancyId ) );
         roomDAO.closeCurrentSession( );
-        updateRoom( room );
+        updateRoom(room);
     }
 
     /** Inspections table */

@@ -29,91 +29,92 @@ import java.util.List;
  */
 public class FacilityManagementClient
 {
+    private static final ApplicationContext context = new ClassPathXmlApplicationContext( "META-INF/app-context.xml" );
+    private static final FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+
     public static void main( String[] args )
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext( "META-INF/app-context.xml" );
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
-//        addBuilding( context );
-//        addSampleDetails( facilityService, context );
-//        addRoomDetail( facilityService, 1, 2 );
-        removeRoomDetail( facilityService, 1, 2 );
+        addBuilding( );
+//        addSampleDetails( );
+//        addRoomDetail( 1, 2 );
+//        removeRoomDetail( 1, 2 );
     }
 
-    private static void addMaintenanceRequest( FacilityService facilityService, Integer requestId, Integer roomId )
+    private static void addMaintenanceRequest( Integer requestId, Integer roomId )
     {
         MaintenanceRequest request = facilityService.readMaintenanceRequest( requestId );
-        facilityService.addMaintenanceRequest( roomId, request );
+        facilityService.addMaintenanceRequest(roomId, request);
     }
 
-    private static void addMaintenanceTicket( FacilityService facilityService, MaintenanceTicket ticket, Integer requestId )
+    private static void addMaintenanceTicket( MaintenanceTicket ticket, Integer requestId )
     {
-        facilityService.addMaintenanceTicket( requestId, ticket );
+        facilityService.addMaintenanceTicket(requestId, ticket);
     }
 
-    private static void addDetail( FacilityService facilityService, Detail detail )
+    private static void addDetail( Detail detail )
     {
-        facilityService.createDetail( detail );
+        facilityService.createDetail(detail);
     }
 
-    private static void addSampleDetails( FacilityService facilityService, ApplicationContext context )
+    private static void addSampleDetails( )
     {
-        addDetail( facilityService, getDetailSample( context, "projector" ) );
-        addDetail( facilityService, getDetailSample( context, "wifi" ) );
-        addDetail( facilityService, getDetailSample( context, "digital sound" ) );
+        addDetail( getDetailSample( "projector") );
+        addDetail( getDetailSample( "wifi" ) );
+        addDetail( getDetailSample( "digital sound"));
     }
 
-    private static void addRoomDetail( FacilityService facilityService, Integer detailId, Integer roomId )
-    {
-        Detail detail = facilityService.readDetail( detailId );
-        facilityService.addRoomDetail( roomId, detail );
-    }
-
-    private static void removeRoomDetail( FacilityService facilityService, Integer detailId, Integer roomId )
+    private static void addRoomDetail( Integer detailId, Integer roomId )
     {
         Detail detail = facilityService.readDetail( detailId );
-        facilityService.removeRoomDetail( roomId, detail );
+        facilityService.addRoomDetail(roomId, detail);
     }
 
-    private static void addRoomOccupancy( FacilityService facilityService, ApplicationContext context, Integer roomId )
+    private static void removeRoomDetail( Integer detailId, Integer roomId )
     {
-        Occupancy occupancy = createOccupancy( context, 50, "2015-03-17 19:00:00", "2015-03-17 21:30:00", "Advanced OO class" );
+        Detail detail = facilityService.readDetail( detailId );
+        facilityService.removeRoomDetail(roomId, detail);
+    }
+
+    private static void addRoomOccupancy( Integer roomId )
+    {
+        Occupancy occupancy = createOccupancy( 50, "2015-03-17 19:00:00", "2015-03-17 21:30:00", "Advanced OO class" );
         facilityService.addRoomOccupancy( roomId, occupancy );
     }
 
-    private static void removeRoomOccupancy( FacilityService facilityService, Integer roomId, Integer occupancyId )
+    private static void removeRoomOccupancy( Integer roomId, Integer occupancyId )
     {
         facilityService.removeRoomOccupancy( roomId, occupancyId );
     }
 
-    private static void addBuilding( FacilityService facilityService, ApplicationContext context )
+    private static void addBuilding( )
     {
         facilityService.createBuilding( getBuildingSample( context ) );
     }
 
-    private static Detail getDetailSample( ApplicationContext context, String detailInfo )
+    private static Detail getDetailSample( String detailInfo )
     {
         Detail detail = ( Detail ) context.getBean( "detail" );
         detail.setDetail( upperCaseTrimmedWhitesSpaces( detailInfo ) );
         return detail;
     }
 
-    private static Building getBuildingSample( ApplicationContext context )
+    private static Building getBuildingSample( )
     {
 
-        Room[] rooms1 = { createRoom( context, 101, 25, "Room 101 description" ), createRoom( context, 102, 26, "Room 102 description" ), createRoom( context, 103, 26, "Room 103 description" ) };
-        Room[] rooms2 = { createRoom( context, 201, 30, "Room 201 description" ), createRoom( context, 202, 15, "Room 202 description" ), createRoom( context, 203, 26, "Room 203 description" ) };
-        Room[] rooms3 = { createRoom( context, 301, 50, "Room 301 description" ), createRoom( context, 302, 16, "Room 302 description" ), createRoom( context, 304, 26, "Room 303 description" ) };
+        Room[] rooms1 = { createRoom( 101, 25, "Room 101 description" ), createRoom( 102, 26, "Room 102 description" ), createRoom( 103, 26, "Room 103 description" ) };
+        Room[] rooms2 = { createRoom( 201, 30, "Room 201 description" ), createRoom( 202, 15, "Room 202 description" ), createRoom( 203, 26, "Room 203 description" ) };
+        Room[] rooms3 = { createRoom( 301, 50, "Room 301 description" ), createRoom( 302, 16, "Room 302 description" ), createRoom( 304, 26, "Room 303 description" ) };
         rooms3[ 0 ].setOccupancies( getOccupanciesSample( context ) );
         rooms3[ 0 ].setInspections( getInspections( context ) );
-        Room[] rooms4 = { createRoom( context, 401, 22, "Room 401 description" ), createRoom( context, 402, 61, "Room 402 description" ), createRoom( context, 404, 26, "Room 403 description" ) };
-        Room[] rooms5 = { createRoom( context, 501, 18, "Room 501 description" ), createRoom( context, 502, 10, "Room 502 description" ), createRoom( context, 504, 26, "Room 503 description" ) };
+        Room[] rooms4 = { createRoom( 401, 22, "Room 401 description" ), createRoom( 402, 61, "Room 402 description" ), createRoom( 404, 26, "Room 403 description" ) };
+        Room[] rooms5 = { createRoom( 501, 18, "Room 501 description" ), createRoom( 502, 10, "Room 502 description" ), createRoom( 504, 26, "Room 503 description" ) };
 
         Facility floor1, floor2, floor3, floor4, floor5;
-        floor1 = createFloor( context, 1, "Floor 1 description", Arrays.asList( rooms1 ) );
-        floor2 = createFloor( context, 2, "Floor 2 description", Arrays.asList( rooms2 ) );
-        floor3 = createFloor( context, 3, "Floor 3 description", Arrays.asList( rooms3 ) );
-        floor4 = createFloor( context, 4, "Floor 4 description", Arrays.asList( rooms4 ) );
-        floor5 = createFloor( context, 5, "Floor 5 description", Arrays.asList( rooms5 ) );
+        floor1 = createFloor( 1, "Floor 1 description", Arrays.asList( rooms1 ) );
+        floor2 = createFloor( 2, "Floor 2 description", Arrays.asList( rooms2 ) );
+        floor3 = createFloor( 3, "Floor 3 description", Arrays.asList( rooms3 ) );
+        floor4 = createFloor( 4, "Floor 4 description", Arrays.asList( rooms4 ) );
+        floor5 = createFloor( 5, "Floor 5 description", Arrays.asList( rooms5 ) );
 
         List< Floor > floors = new ArrayList< Floor >( );
         floors.add( ( Floor ) floor1 );
@@ -122,7 +123,7 @@ public class FacilityManagementClient
         floors.add( ( Floor ) floor4 );
         floors.add( ( Floor ) floor5 );
 
-        return createBuilding( context, "Building description", "Lewis Towers  ", "55   E.    Pearson  St. ", "",
+        return createBuilding( "Building description", "Lewis Towers  ", "55   E.    Pearson  St. ", "",
                                "Chicago", "IL", 60611, "7734456945", floors );
     }
 
@@ -155,7 +156,7 @@ public class FacilityManagementClient
         return inspection;
     }
 
-    public static Room createRoom( ApplicationContext context, Integer number, Integer capacity, String description )
+    public static Room createRoom( Integer number, Integer capacity, String description )
     {
         Room room = ( Room ) context.getBean( "room" );
         room.setNumber( number );
@@ -164,7 +165,7 @@ public class FacilityManagementClient
         return room;
     }
 
-    public static Floor createFloor( ApplicationContext context, Integer level, String description, List< Room > rooms )
+    public static Floor createFloor( Integer level, String description, List< Room > rooms )
     {
         Floor floor = ( Floor ) context.getBean( "floor" );
         Integer capacity = 0;
@@ -179,7 +180,7 @@ public class FacilityManagementClient
         return floor;
     }
 
-    public static Building createBuilding( ApplicationContext context, String description, String name,
+    public static Building createBuilding( String description, String name,
                                            String addressLine1, String addressLine2, String city, String state,
                                            Integer zip, String phoneNumber, List< Floor > floors )
     {
@@ -205,7 +206,7 @@ public class FacilityManagementClient
         return building;
     }
 
-    public static Occupancy createOccupancy( ApplicationContext context, Integer totalCapacity, String startDate,
+    public static Occupancy createOccupancy( Integer totalCapacity, String startDate,
                                              String endDate, String usage )
     {
         Occupancy occupancy = ( Occupancy ) context.getBean( "occupancy" );
@@ -249,9 +250,9 @@ public class FacilityManagementClient
 
     private static List< Occupancy > getOccupanciesSample( ApplicationContext context )
     {
-        Occupancy occupancy1 = createOccupancy( context, 50, "2014-12-31 19:00:00", "2015-01-01 04:00:00", "New year's party" );
-        Occupancy occupancy2 = createOccupancy( context, 25, "2015-03-17 09:30:00", "2015-03-17 23:59:00", "St Patrick's day party" );
-        Occupancy occupancy3 = createOccupancy( context, 10, "2015-02-14 13:00:00", "2015-02-17 20:45:00", "Valentines party" );
+        Occupancy occupancy1 = createOccupancy( 50, "2014-12-31 19:00:00", "2015-01-01 04:00:00", "New year's party" );
+        Occupancy occupancy2 = createOccupancy( 25, "2015-03-17 09:30:00", "2015-03-17 23:59:00", "St Patrick's day party" );
+        Occupancy occupancy3 = createOccupancy( 10, "2015-02-14 13:00:00", "2015-02-17 20:45:00", "Valentines party" );
 
         List< Occupancy > occupancies = new ArrayList< Occupancy >( );
         occupancies.add( occupancy1 );

@@ -32,13 +32,7 @@
     </bean>
     <bean id="inspection" class="Comp473p2.domain.Inspection" scope="prototype"/>
     <bean id="maintenanceTicket" class="Comp473p2.domain.maintenance.MaintenanceTicket" scope="prototype"/>
-    <bean id="maintenanceRequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype">
-        <property name="maintenanceTickets">
-            <list>
-                <!--<ref bean="maintenanceTicket"/>-->
-            </list>
-        </property>
-    </bean>
+    <bean id="maintenanceRequest" class="Comp473p2.domain.maintenance.MaintenanceRequest" scope="prototype"/>
 
     <bean id="occupancy" class="Comp473p2.domain.Occupancy" scope="prototype"/>
 
