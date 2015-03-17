@@ -33,9 +33,3 @@ easily usable is not done yet. The main
 focus was getting Hibernate and Spring 
 properly implemented, and that has been
 done.
-
-DATABASE DETAILS
-------------------------------------------
-IP: 173.194.243.115:3306
-USER: root
-PASSWORD: comp473
