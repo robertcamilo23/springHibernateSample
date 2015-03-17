@@ -53,32 +53,13 @@ public class Detail
         this.rooms = rooms;
     }
 
-//    private List< String > details;
-//
-//    public Detail( )
-//    {
-//        details = new ArrayList< String >( );
-//    }
-//
-//    public Detail( String detail )
-//    {
-//        details = new ArrayList< String >( );
-//        details.add( detail );
-//    }
-//
-//    public void addFacilityDetail( String detail )
-//    {
-//        String timestamp = new SimpleDateFormat( "yyyyMMdd_HHmmss" ).format( Calendar.getInstance( ).getTime( ) );
-//        details.add( timestamp + " " + detail );
-//    }
-//
-//    public String getFacilityInformation( )
-//    {
-//        String facilityInformation = "";
-//        for ( String detail : details )
-//        {
-//            facilityInformation += detail + "\n";
-//        }
-//        return facilityInformation;
-//    }
+    @Override
+    public boolean equals( Object obj )
+    {
+        if ( !( obj instanceof Detail ) )
+        {
+            return false;
+        }
+        return this.getDetailID( ).equals( ( ( Detail ) obj ).getDetailID( ) );
+    }
 }

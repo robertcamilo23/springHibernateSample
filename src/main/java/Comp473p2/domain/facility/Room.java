@@ -93,6 +93,11 @@ public class Room extends Facility
         this.details.add( detail );
     }
 
+    public void removeDetail( Detail detail )
+    {
+        this.details.remove( detail );
+    }
+    
     public void addOccupancy( Occupancy occupancy )
     {
         this.occupancies.add( occupancy );
@@ -102,4 +107,5 @@ public class Room extends Facility
     {
         this.occupancies.remove( occupancy );
     }
+
 }

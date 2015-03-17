@@ -32,51 +32,68 @@ public class FacilityManagementClient
     public static void main( String[] args )
     {
         ApplicationContext context = new ClassPathXmlApplicationContext( "META-INF/app-context.xml" );
-        addBuilding( context );
+        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+//        addBuilding( context );
+//        addSampleDetails( facilityService, context );
+//        addRoomDetail( facilityService, 1, 2 );
+        removeRoomDetail( facilityService, 1, 2 );
     }
 
-    private static void addMaintenanceRequest( ApplicationContext context, Integer requestId, Integer roomId )
+    private static void addMaintenanceRequest( FacilityService facilityService, Integer requestId, Integer roomId )
     {
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         MaintenanceRequest request = facilityService.readMaintenanceRequest( requestId );
         facilityService.addMaintenanceRequest( roomId, request );
     }
 
-    private static void addMaintenanceTicket( ApplicationContext context, MaintenanceTicket ticket, Integer requestId )
+    private static void addMaintenanceTicket( FacilityService facilityService, MaintenanceTicket ticket, Integer requestId )
     {
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         facilityService.addMaintenanceTicket( requestId, ticket );
     }
 
-    private static void addRoomDetail( ApplicationContext context, Integer detailId, Integer roomId )
+    private static void addDetail( FacilityService facilityService, Detail detail )
     {
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        facilityService.createDetail( detail );
+    }
+
+    private static void addSampleDetails( FacilityService facilityService, ApplicationContext context )
+    {
+        addDetail( facilityService, getDetailSample( context, "projector" ) );
+        addDetail( facilityService, getDetailSample( context, "wifi" ) );
+        addDetail( facilityService, getDetailSample( context, "digital sound" ) );
+    }
+
+    private static void addRoomDetail( FacilityService facilityService, Integer detailId, Integer roomId )
+    {
         Detail detail = facilityService.readDetail( detailId );
         facilityService.addRoomDetail( roomId, detail );
     }
 
-    private static void addRoomOccupancy( ApplicationContext context, Integer roomId )
+    private static void removeRoomDetail( FacilityService facilityService, Integer detailId, Integer roomId )
     {
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
+        Detail detail = facilityService.readDetail( detailId );
+        facilityService.removeRoomDetail( roomId, detail );
+    }
+
+    private static void addRoomOccupancy( FacilityService facilityService, ApplicationContext context, Integer roomId )
+    {
         Occupancy occupancy = createOccupancy( context, 50, "2015-03-17 19:00:00", "2015-03-17 21:30:00", "Advanced OO class" );
         facilityService.addRoomOccupancy( roomId, occupancy );
     }
 
-    private static void removeRoomOccupancy( ApplicationContext context, Integer roomId, Integer occupancyId )
+    private static void removeRoomOccupancy( FacilityService facilityService, Integer roomId, Integer occupancyId )
     {
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         facilityService.removeRoomOccupancy( roomId, occupancyId );
     }
 
-    private static void addBuilding( ApplicationContext context )
+    private static void addBuilding( FacilityService facilityService, ApplicationContext context )
     {
-        FacilityService facilityService = ( FacilityService ) context.getBean( "facilityService" );
         facilityService.createBuilding( getBuildingSample( context ) );
     }
 
-    private static Detail getDetailSample( ApplicationContext context )
+    private static Detail getDetailSample( ApplicationContext context, String detailInfo )
     {
         Detail detail = ( Detail ) context.getBean( "detail" );
+        detail.setDetail( upperCaseTrimmedWhitesSpaces( detailInfo ) );
         return detail;
     }
 
