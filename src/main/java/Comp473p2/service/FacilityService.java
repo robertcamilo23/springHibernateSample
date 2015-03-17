@@ -203,7 +203,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     public void updateMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
         ticketDAO.openCurrentSessionWithTransaction( );
-        ticketDAO.update(maintenanceTicket);
+        ticketDAO.update( maintenanceTicket );
         ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
@@ -218,7 +218,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     public void deleteMaintenanceTicket( MaintenanceTicket maintenanceTicket )
     {
         ticketDAO.openCurrentSessionWithTransaction( );
-        ticketDAO.delete(maintenanceTicket);
+        ticketDAO.delete( maintenanceTicket );
         ticketDAO.closeCurrentSessionWithTransaction( );
     }
 
@@ -232,7 +232,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
         requestDAO.openCurrentSession( );
         MaintenanceRequest request = requestDAO.findById( requestId );
         request.setMaintenanceTicket( ticket );
-        ticket.setStatus(MaintenanceStatus.OPENED);
+        ticket.setStatus( MaintenanceStatus.OPENED );
         roomDAO.closeCurrentSession( );
         updateMaintenanceRequest( request );
     }
@@ -277,9 +277,9 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
     {
         roomDAO.openCurrentSession( );
         Room room = roomDAO.findById( roomId );
-        room.addOccupancy(occupancy);
-        roomDAO.closeCurrentSession();
-        updateRoom(room);
+        room.addOccupancy( occupancy );
+        roomDAO.closeCurrentSession( );
+        updateRoom( room );
     }
 
     public void removeRoomOccupancy( Integer roomId, Integer occupancyId )
@@ -288,7 +288,7 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
         Room room = roomDAO.findById( roomId );
         room.removeOccupancy( readOccupancy( occupancyId ) );
         roomDAO.closeCurrentSession( );
-        updateRoom(room);
+        updateRoom( room );
     }
 
     /** Inspections table */
@@ -342,13 +342,16 @@ public class FacilityService implements FacilityCRUD, DetailCRUD
         roomDAO.closeCurrentSession( );
         updateRoom( room );
     }
-    
-    public void removeRoomDetail( Integer roomId, Detail detail )
+
+    public void removeRoomDetail( Integer roomId, Integer detailId )
     {
         roomDAO.openCurrentSession( );
+        detailDAO.openCurrentSession( );
         Room room = roomDAO.findById( roomId );
-        room.removeDetail(detail);
+        Detail detail = detailDAO.findById( detailId );
+        room.removeDetail( detail );
         roomDAO.closeCurrentSession( );
+        detailDAO.closeCurrentSession( );
         updateRoom( room );
     }
 

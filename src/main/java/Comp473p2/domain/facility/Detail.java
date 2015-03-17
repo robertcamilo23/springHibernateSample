@@ -1,5 +1,6 @@
 package Comp473p2.domain.facility;
 
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -61,5 +62,19 @@ public class Detail
             return false;
         }
         return this.getDetailID( ).equals( ( ( Detail ) obj ).getDetailID( ) );
+    }
+
+    public void removeRoom( Room room )
+    {
+        Iterator< Room > iterator = this.rooms.iterator( );
+        while ( iterator.hasNext( ) )
+        {
+            Room roomFromSet = iterator.next( );
+            if ( roomFromSet.equals( room ) )
+            {
+                this.rooms.remove( roomFromSet );
+                break;
+            }
+        }
     }
 }
