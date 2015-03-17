@@ -88,7 +88,7 @@ public class FacilityManagementClient
 
     private static void addBuilding( )
     {
-        facilityService.createBuilding( getBuildingSample( context ) );
+        facilityService.createBuilding( getBuildingSample( ) );
     }
 
     private static Detail getDetailSample( String detailInfo )
