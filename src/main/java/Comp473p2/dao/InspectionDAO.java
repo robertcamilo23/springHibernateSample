@@ -6,7 +6,14 @@ import Comp473p2.domain.interfaces.FacilityDAOInterface;
 import java.util.List;
 
 /**
- * Created by Jessica on 3/13/2015.
+ * InspectionDAO.java
+ *
+ * @author:
+ *
+ * Jessica de la Cruz - jdelacruz2@luc.edu
+ * Robert Martinez - rmartinezpaez@luc.edu
+ * Raymond Harris - rharris4@luc.edu
+ * Loyola University Chicago
  */
 public class InspectionDAO extends SessionManager implements FacilityDAOInterface< Inspection, Integer >
 {

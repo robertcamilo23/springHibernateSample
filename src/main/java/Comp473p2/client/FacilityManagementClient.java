@@ -18,7 +18,14 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by robert on 3/5/15.
+ * FacilityManagementClient.java
+ *
+ * @author:
+ *
+ * Jessica de la Cruz - jdelacruz2@luc.edu
+ * Robert Martinez - rmartinezpaez@luc.edu
+ * Raymond Harris - rharris4@luc.edu
+ * Loyola University Chicago
  */
 public class FacilityManagementClient
 {

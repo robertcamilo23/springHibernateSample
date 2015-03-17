@@ -59,7 +59,13 @@ public class Inspection
         type = newType;
     }
 
-    public Integer getInspectionId( ) { return inspectionId; }
+    public Integer getInspectionId( )
+    {
+        return inspectionId;
+    }
 
-    public void setInspectionId( Integer newInspectionID ) { inspectionId = newInspectionID; }
+    public void setInspectionId( Integer newInspectionID )
+    {
+        inspectionId = newInspectionID;
+    }
 }

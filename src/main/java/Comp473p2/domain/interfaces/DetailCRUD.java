@@ -3,7 +3,14 @@ package Comp473p2.domain.interfaces;
 import Comp473p2.domain.facility.Detail;
 
 /**
- * Created by robert on 3/13/15.
+ * DetailCRUD.java
+ *
+ * @author:
+ *
+ * Jessica de la Cruz - jdelacruz2@luc.edu
+ * Robert Martinez - rmartinezpaez@luc.edu
+ * Raymond Harris - rharris4@luc.edu
+ * Loyola University Chicago
  */
 public interface DetailCRUD
 {

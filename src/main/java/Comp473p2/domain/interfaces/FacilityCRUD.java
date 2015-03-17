@@ -9,7 +9,14 @@ import Comp473p2.domain.maintenance.MaintenanceRequest;
 import Comp473p2.domain.maintenance.MaintenanceTicket;
 
 /**
- * Created by robert on 3/5/15.
+ * FacilityCRUD.java
+ *
+ * @author:
+ *
+ * Jessica de la Cruz - jdelacruz2@luc.edu
+ * Robert Martinez - rmartinezpaez@luc.edu
+ * Raymond Harris - rharris4@luc.edu
+ * Loyola University Chicago
  */
 public interface FacilityCRUD
 {

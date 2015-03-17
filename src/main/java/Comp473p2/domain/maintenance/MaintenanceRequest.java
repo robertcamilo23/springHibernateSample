@@ -1,7 +1,5 @@
 package Comp473p2.domain.maintenance;
 
-import java.util.List;
-
 /**
  * MaintenanceRequest.java
  *
@@ -61,7 +59,13 @@ public class MaintenanceRequest extends Maintenance
         this.description = description;
     }
 
-    public MaintenanceTicket getMaintenanceTicket() { return maintenanceTicket; }
+    public MaintenanceTicket getMaintenanceTicket( )
+    {
+        return maintenanceTicket;
+    }
 
-    public void setMaintenanceTicket( MaintenanceTicket maintenanceTicket ) { this.maintenanceTicket = maintenanceTicket; }
+    public void setMaintenanceTicket( MaintenanceTicket maintenanceTicket )
+    {
+        this.maintenanceTicket = maintenanceTicket;
+    }
 }

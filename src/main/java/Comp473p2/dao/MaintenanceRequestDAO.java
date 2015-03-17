@@ -6,7 +6,14 @@ import Comp473p2.domain.maintenance.MaintenanceRequest;
 import java.util.List;
 
 /**
- * Created by Jessica on 3/13/2015.
+ * MaintenanceRequestDAO.java
+ *
+ * @author:
+ *
+ * Jessica de la Cruz - jdelacruz2@luc.edu
+ * Robert Martinez - rmartinezpaez@luc.edu
+ * Raymond Harris - rharris4@luc.edu
+ * Loyola University Chicago
  */
 public class MaintenanceRequestDAO extends SessionManager implements FacilityDAOInterface< MaintenanceRequest, Integer >
 {
