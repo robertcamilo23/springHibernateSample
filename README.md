@@ -2,9 +2,9 @@ COMP 473: Project 2
 
 AUTHORS
 ------------------------------------------
-Jessica de la Cruz - jdelacruz2@luc.edu
-Robert Martinez    - rmartinezpaez@luc.edu
-Raymond Harris     - rharris4@luc.edu
+* Jessica de la Cruz - jdelacruz2@luc.edu
+* Robert Martinez    - rmartinezpaez@luc.edu
+* Raymond Harris     - rharris4@luc.edu
 
 
 NOTE
@@ -12,8 +12,8 @@ NOTE
 All Hibernate xml files and the Spring xml
 file are located in the "resources" folder.
 
-Spring Version:    4.1.5
-Hibernate version: 4.3.8
+* Spring Version:    4.1.5
+* Hibernate version: 4.3.8
 
 
 DESCRIPTION
@@ -27,3 +27,9 @@ easily usable is not done yet. The main
 focus was getting Hibernate and Spring 
 properly implemented, and that has been
 done.
+
+**UML - Facility Management System - Project 2**
+![COMP 473 - UML - Facility Management System - Project 2.png](https://bitbucket.org/repo/xjkn7X/images/4060977245-COMP%20473%20-%20UML%20-%20Facility%20Management%20System%20-%20Project%202.png)
+
+**ER Diagram - Facility Management System - Project 2**
+![erdiagram.png](https://bitbucket.org/repo/xjkn7X/images/1269079804-erdiagram.png)
