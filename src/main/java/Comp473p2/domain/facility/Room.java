@@ -4,6 +4,7 @@ import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.maintenance.MaintenanceRequest;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -95,9 +96,28 @@ public class Room extends Facility
 
     public void removeDetail( Detail detail )
     {
-        this.details.remove( detail );
+        Iterator< Detail > iterator = this.details.iterator( );
+        while ( iterator.hasNext( ) )
+        {
+            Detail detailFromSet = iterator.next( );
+            if ( detailFromSet.equals( detail ) )
+            {
+                this.details.remove( detailFromSet );
+                break;
+            }
+        }
     }
-    
+
+    @Override
+    public boolean equals( Object obj )
+    {
+        if ( !( obj instanceof Room ) )
+        {
+            return false;
+        }
+        return this.getFacilityId( ).equals( ( ( Room ) obj ).getFacilityId( ) );
+    }
+
     public void addOccupancy( Occupancy occupancy )
     {
         this.occupancies.add( occupancy );

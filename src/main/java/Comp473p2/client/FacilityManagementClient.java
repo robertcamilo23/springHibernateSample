@@ -34,45 +34,45 @@ public class FacilityManagementClient
 
     public static void main( String[] args )
     {
-        addBuilding( );
+//        addBuilding( );
 //        addSampleDetails( );
 //        addRoomDetail( 1, 2 );
-//        removeRoomDetail( 1, 2 );
+//        addRoomDetail( 6,10 );
+//        removeRoomDetail( 6, 10 );
     }
 
     private static void addMaintenanceRequest( Integer requestId, Integer roomId )
     {
         MaintenanceRequest request = facilityService.readMaintenanceRequest( requestId );
-        facilityService.addMaintenanceRequest(roomId, request);
+        facilityService.addMaintenanceRequest( roomId, request );
     }
 
     private static void addMaintenanceTicket( MaintenanceTicket ticket, Integer requestId )
     {
-        facilityService.addMaintenanceTicket(requestId, ticket);
+        facilityService.addMaintenanceTicket( requestId, ticket );
     }
 
     private static void addDetail( Detail detail )
     {
-        facilityService.createDetail(detail);
+        facilityService.createDetail( detail );
     }
 
     private static void addSampleDetails( )
     {
-        addDetail( getDetailSample( "projector") );
+        addDetail( getDetailSample( "projector" ) );
         addDetail( getDetailSample( "wifi" ) );
-        addDetail( getDetailSample( "digital sound"));
+        addDetail( getDetailSample( "digital sound" ) );
     }
 
-    private static void addRoomDetail( Integer detailId, Integer roomId )
+    private static void addRoomDetail( Integer roomId, Integer detailId )
     {
         Detail detail = facilityService.readDetail( detailId );
-        facilityService.addRoomDetail(roomId, detail);
+        facilityService.addRoomDetail( roomId, detail );
     }
 
-    private static void removeRoomDetail( Integer detailId, Integer roomId )
+    private static void removeRoomDetail( Integer roomId, Integer detailId )
     {
-        Detail detail = facilityService.readDetail( detailId );
-        facilityService.removeRoomDetail(roomId, detail);
+        facilityService.removeRoomDetail( roomId, detailId );
     }
 
     private static void addRoomOccupancy( Integer roomId )
