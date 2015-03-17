@@ -50,6 +50,10 @@ public class FacilityManagementClient
         facilityService.addMaintenanceTicket( requestId, ticket );
     }
 
+    private static void updateMaintenanceTicketStatus( MaintenanceStatus status, Integer ticketId ) {
+        facilityService.updateMaintenanceTicketStatus( status, ticketId );
+    }
+
     private static void addDetail( Detail detail )
     {
         facilityService.createDetail( detail );
