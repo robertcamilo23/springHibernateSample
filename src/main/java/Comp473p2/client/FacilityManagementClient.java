@@ -3,6 +3,7 @@ package Comp473p2.client;
 import Comp473p2.domain.Inspection;
 import Comp473p2.domain.Occupancy;
 import Comp473p2.domain.enums.InspectionType;
+import Comp473p2.domain.enums.MaintenanceStatus;
 import Comp473p2.domain.facility.*;
 import Comp473p2.domain.maintenance.MaintenanceRequest;
 import Comp473p2.domain.maintenance.MaintenanceTicket;
@@ -86,23 +87,23 @@ public class FacilityManagementClient
     private static void addRoomDetail( Integer roomId, Integer detailId )
     {
         Detail detail = facilityService.readDetail( detailId );
-        facilityService.addRoomDetail( roomId, detail );
+        facilityService.addRoomDetail(roomId, detail);
     }
 
     private static void removeRoomDetail( Integer roomId, Integer detailId )
     {
-        facilityService.removeRoomDetail( roomId, detailId );
+        facilityService.removeRoomDetail(roomId, detailId);
     }
 
     private static void addRoomOccupancy( Integer roomId )
     {
         Occupancy occupancy = createOccupancy( 50, "2015-03-17 19:00:00", "2015-03-17 21:30:00", "Advanced OO class" );
-        facilityService.addRoomOccupancy( roomId, occupancy );
+        facilityService.addRoomOccupancy(roomId, occupancy);
     }
 
     private static void removeRoomOccupancy( Integer roomId, Integer occupancyId )
     {
-        facilityService.removeRoomOccupancy( roomId, occupancyId );
+        facilityService.removeRoomOccupancy(roomId, occupancyId);
     }
 
     private static void addBuilding( )
