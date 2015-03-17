@@ -34,11 +34,9 @@ public class FacilityManagementClient
 
     public static void main( String[] args )
     {
-//        addBuilding( );
-//        addSampleDetails( );
-//        addRoomDetail( 1, 2 );
-//        addRoomDetail( 6,10 );
-//        removeRoomDetail( 6, 10 );
+        addBuilding( );
+        addSampleDetails( );
+        addRoomOccupancy( 2 );
     }
 
     private static void addMaintenanceRequest( Integer requestId, Integer roomId )
@@ -58,6 +56,23 @@ public class FacilityManagementClient
     }
 
     private static void addSampleDetails( )
+    {
+        insertDetails( );
+        addRoomDetail( 1, 1 );
+        addRoomDetail( 1, 2 );
+        addRoomDetail( 1, 3 );
+        addRoomDetail( 2, 1 );
+        addRoomDetail( 2, 2 );
+        addRoomDetail( 2, 3 );
+        addRoomDetail( 10, 1 );
+        addRoomDetail( 10, 2 );
+        addRoomDetail( 10, 3 );
+        removeRoomDetail( 2, 2 );
+        removeRoomDetail( 2, 3 );
+        removeRoomDetail( 10, 1 );
+    }
+
+    private static void insertDetails( )
     {
         addDetail( getDetailSample( "projector" ) );
         addDetail( getDetailSample( "wifi" ) );
