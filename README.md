@@ -29,7 +29,7 @@ properly implemented, and that has been
 done.
 
 **UML - Facility Management System - Project 2**
-![COMP 473 - UML - Facility Management System - Project 2.png](https://bitbucket.org/repo/xjkn7X/images/4060977245-COMP%20473%20-%20UML%20-%20Facility%20Management%20System%20-%20Project%202.png)
+![4060977245-COMP 473 - UML - Facility Management System - Project 2.png](https://bitbucket.org/repo/o9pdBX/images/133046872-4060977245-COMP%20473%20-%20UML%20-%20Facility%20Management%20System%20-%20Project%202.png)
 
 **ER Diagram - Facility Management System - Project 2**
-![erdiagram.png](https://bitbucket.org/repo/xjkn7X/images/1269079804-erdiagram.png)
+![1269079804-erdiagram.png](https://bitbucket.org/repo/o9pdBX/images/2394971241-1269079804-erdiagram.png)
